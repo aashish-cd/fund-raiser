@@ -10,6 +10,12 @@ $placeholder-text-color: rgba(255, 255, 255, 0.5);
 $horizontal-line-color: rgba(255, 255, 255, 0.12);
 $primary-logo-color: #7635b3;
 $secondary-logo-color: #696fb2;
+
+@font-face {
+  font-family: 'ClashDisplay-Variable';
+  src: url('fonts/ClashDisplay-Variable.woff') format('woff');
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -25,6 +31,7 @@ body {
 body {
   color: #fff;
   background: $primary-background-color;
+  font-family: 'ClashDisplay-Variable';
 }
 
 @media (prefers-color-scheme: dark) {
@@ -60,8 +67,9 @@ body {
   font-weight: 500;
   font-size: 15px;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.2em;
   cursor: pointer;
+
 }
 .primary-button:hover {
   transition: 0.3s ease-in-out;
