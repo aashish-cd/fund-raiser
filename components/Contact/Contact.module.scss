@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+.contact {
+  padding: 30px;
+  // text-align: center;
+}
+.connectPart {
+  text-align: right;
+  margin-left: auto;
+  margin-bottom: 100px;
+}
+.formWrapper {
+  display: grid;
+  grid-template-columns: 3fr 3fr;
+  gap: 20px;
+}
+.eachPart {
+  display: flex;
+  align-items: left;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 10px;
+}
+.eachPart input {
+  background-color: transparent;
+  padding: 16px 26px;
+  border: 2px solid rgba(255, 255, 255, 0.12);
+  border-radius: 5px;
+  width: 736px;
+  font-family: 'Poppins';
+}
+.eachPart label {
+  font-size: 18px;
+}
+.messageContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+.messageContainer textarea {
+  font-family: 'Poppins';
+  background-color: transparent;
+  padding: 16px 26px;
+  border: 2px solid rgba(255, 255, 255, 0.12);
+  border-radius: 5px;
+  width: 1490px;
+}
+.messageContainer button {
+  width: 50%;
+  text-align: center;
+  margin-left: 25%;
+  padding: 15px 30px;
+  font-family: 'ClashDisplay-Variable';
+  font-size: 1.4em;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+
+  color: #ffffff;
+  background: linear-gradient(101.4deg, #7635b3 0%, #696fb2 100%);
+  border-radius: 5px;
+  cursor: pointer;
+}
+.connectPart h3 {
+  font-size: 80px;
+  line-height: 110%;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.connectPart h3 span {
+  // color: #7635b3;
+  // -webkit-text-stroke: #7635b3;
+  color: #7635b3;
+  background-color: black;
+  text-shadow: -1px -1px 0 #7635b3, 1px -1px 0 #7635b3, -1px 1px 0 #7635b3,
+    1px 1px 0 #7635b3;
+}
+.connectPart p {
+  font-family: 'Poppins';
+  font-size: 18px;
+  line-height: 27px;
+  color: #c0c0c0;
+}

@@ -1,2 +1,101 @@
+$background-gradient-color: -webkit-linear-gradient(
+  101.4deg,
+  #7635b3 0%,
+  #696fb2 100%
+);
+
 .footer {
+  margin: 0px;
+  //   padding: 100px;
+  margin-left: 0px;
+}
+
+.footerContainer {
+  display: grid;
+  grid-template-columns: 1fr auto;
+}
+.horizontalline {
+  width: 100vw;
+  background-color: rgba(255, 255, 255, 0.12);
+  // height: 1px;
+  // background-color: red;
+  height: 1px;
+  border: none;
+}
+.mainContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  height: 348px;
+}
+.insideMainContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: space-around;
+  gap: 100px;
+}
+.firstContainer {
+  display: flex;
+  flex-direction: row;
+
+  text-align: left;
+  justify-content: left;
+  gap: 100px;
+  font-family: 'ClashDisplay-Variable';
+  //   font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+}
+.firstContainerTitle {
+  font-size: 18px;
+  letter-spacing: 0.05em;
+  line-height: 130%;
+  color: white;
+}
+.imageWrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: left;
+  gap: 50px;
+}
+.totalFooter {
+  display: flex;
+  flex-direction: row;
+  font-family: 'ClashDisplay-Variable';
+  font-style: normal;
+  font-weight: lighter;
+  font-size: 13px;
+  line-height: 100%;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 20px;
+  padding: 10px 160px;
+  align-items: center;
+  justify-content: space-between;
+}
+.privacyAndImprint {
+  gap: 50px;
+  display: flex;
+  flex-direction: row;
+}
+.imageContainer {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border: double 3px transparent;
+  background-image: linear-gradient(white, white), $background-gradient-color;
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  background: transparent;
+}
+.marginLeft {
+  margin-left: 74px;
 }
