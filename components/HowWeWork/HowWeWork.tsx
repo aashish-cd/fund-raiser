@@ -17,7 +17,9 @@ const HowWeWork = () => {
             </div>
             <ul>
               {item.points.map((listItem, index) => (
-                <li key={index}>{listItem}</li>
+                <li key={index} className="secondary-text">
+                  {listItem}
+                </li>
               ))}
             </ul>
           </div>
