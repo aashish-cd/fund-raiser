@@ -10,10 +10,75 @@ $placeholder-text-color: rgba(255, 255, 255, 0.5);
 $horizontal-line-color: rgba(255, 255, 255, 0.12);
 $primary-logo-color: #7635b3;
 $secondary-logo-color: #696fb2;
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap');
 @font-face {
   font-family: 'ClashDisplay-Variable';
-  src: url('fonts/ClashDisplay-Variable.woff') format('woff');
+  src: url('fonts/ClashDisplay-Variable.woff2') format('woff2'),
+    url('fonts/ClashDisplay-Variable.woff') format('woff'),
+    url('fonts/ClashDisplay-Variable.ttf') format('truetype');
+  font-weight: 200 700;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ClashDisplay-Extralight';
+  src: url('fonts/ClashDisplay-Extralight.woff2') format('woff2'),
+    url('fonts/ClashDisplay-Extralight.woff') format('woff'),
+    url('fonts/ClashDisplay-Extralight.ttf') format('truetype');
+  font-weight: 200;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ClashDisplay-Light';
+  src: url('fonts/ClashDisplay-Light.woff2') format('woff2'),
+    url('fonts/ClashDisplay-Light.woff') format('woff'),
+    url('fonts/ClashDisplay-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ClashDisplay-Regular';
+  src: url('fonts/ClashDisplay-Regular.woff2') format('woff2'),
+    url('fonts/ClashDisplay-Regular.woff') format('woff'),
+    url('fonts/ClashDisplay-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ClashDisplay-Medium';
+  src: url('fonts/ClashDisplay-Medium.woff2') format('woff2'),
+    url('fonts/ClashDisplay-Medium.woff') format('woff'),
+    url('fonts/ClashDisplay-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ClashDisplay-Semibold';
+  src: url('fonts/ClashDisplay-Semibold.woff2') format('woff2'),
+    url('fonts/ClashDisplay-Semibold.woff') format('woff'),
+    url('fonts/ClashDisplay-Semibold.ttf') format('truetype');
+  font-weight: 600;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ClashDisplay-Bold';
+  src: url('fonts/ClashDisplay-Bold.woff2') format('woff2'),
+    url('fonts/ClashDisplay-Bold.woff') format('woff'),
+    url('fonts/ClashDisplay-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
 }
 
 * {
@@ -29,7 +94,7 @@ body {
 }
 
 body {
-  color: #fff;
+  color: $primary-text-color;
   background: $primary-background-color;
   font-family: 'ClashDisplay-Variable';
 }
@@ -44,7 +109,7 @@ body {
   color: $primary-text-color;
 }
 .secondary-text {
-  color: $secondary-logo-color;
+  color: $secondary-text-color;
 }
 .outline-gradient-text {
   color: $primary-background-color;
@@ -74,4 +139,15 @@ body {
   transition: 0.3s ease-in-out;
   background: $primary-background-color;
   color: $primary-logo-color;
+}
+@keyframes animateDash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+svg {
+  stroke-dasharray: 500;
+  stroke-dashoffset: 500;
+  pointer-events: none;
+  animation: animateDash 5s linear forwards infinite;
 }
