@@ -146,8 +146,8 @@ body {
   }
 }
 svg {
-  stroke-dasharray: 500;
-  stroke-dashoffset: 500;
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400;
   pointer-events: none;
   animation: animateDash 5s linear forwards infinite;
 }
