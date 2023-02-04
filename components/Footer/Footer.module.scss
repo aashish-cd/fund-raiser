@@ -97,6 +97,11 @@ $background-gradient-color: -webkit-linear-gradient(
 }
 
 // breakpoints - 1200, 1024, 768, 600, 480, 320
+@media screen and (max-width: 1800px) {
+  .mantraPic {
+    scale: 90%;
+  }
+}
 @media screen and (max-width: 1650px) {
   .totalFooter {
     padding: 0.8rem 5vw;
@@ -124,8 +129,7 @@ $background-gradient-color: -webkit-linear-gradient(
     }
   }
   .mantraPic {
-    height: 100px;
-    width: 260px;
+    scale: 85%;
   }
   .totalFooter {
     padding: 0.8rem 4vw;
