@@ -5,9 +5,9 @@ const Contact = () => {
   return (
     <div className={styles.contact}>
       <div className={styles.connectPart}>
-        <h3>
+        <h1>
           <span className="outline-gradient-text">Let&apos;s</span> Connect
-        </h3>
+        </h1>
         <p>Build your business together with MANTRA LABS</p>
       </div>
       <div className={styles.formWrapper}>

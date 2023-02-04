@@ -11,6 +11,7 @@ const Footer = () => {
           <div>
             <Image
               src={'/Mantralogo.png'}
+              className={styles.mantraPic}
               alt="mantrapic"
               width={319}
               height={108}
