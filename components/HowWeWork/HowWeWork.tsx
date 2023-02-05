@@ -9,7 +9,7 @@ const HowWeWork = ({
   title: { mainText: string; text: string }
 }) => {
   return (
-    <section className={styles.container}>
+    <section className={`section-margin ${styles.container}`}>
       <h1 className={styles.heading}>
         <span className={` outline-gradient-text`}>{title.mainText} </span>{' '}
         {title.text}
