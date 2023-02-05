@@ -1,0 +1,26 @@
+.svg {
+  width: 100%;
+  height: 100%;
+  // animation
+  animation: animateDash 10s linear forwards infinite;
+  // stroke
+  stroke-dasharray: 1500;
+  stroke-dashoffset: 1500;
+  // pointer-events
+  pointer-events: none;
+}
+
+.heroSvg {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  top: 0;
+  right: 0;
+}
+
+// animateDash
+@keyframes animateDash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
