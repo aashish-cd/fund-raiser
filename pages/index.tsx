@@ -18,7 +18,7 @@ export default function Home() {
           }}
           data={ourServicesData}
         />
-        <OurWork />
+        <OurWork mainText="OUR" text="WORKS" />
         <HowWeWork
           title={{
             mainText: 'HOW WE',
