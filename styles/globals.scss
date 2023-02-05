@@ -140,6 +140,9 @@ body {
   background: $primary-background-color;
   color: $primary-logo-color;
 }
+.section-margin {
+  margin-top: 5rem;
+}
 @keyframes animateDash {
   to {
     stroke-dashoffset: 0;

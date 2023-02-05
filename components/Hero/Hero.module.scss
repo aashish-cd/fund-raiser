@@ -1,0 +1,190 @@
+.container {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.heroContainer {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: flex-end;
+  .heading {
+    font-size: 10rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    line-height: 100%;
+  }
+}
+
+.textContainer {
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+  margin-top: 2rem;
+  .heading {
+    font-size: 10rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    line-height: 100%;
+  }
+}
+
+.svg {
+  position: absolute;
+  left: 20%;
+  top: 200px;
+  // left: 25%;
+  width: 100%;
+  height: 100%;
+  // animation
+  animation: animateDash 8s linear forwards infinite;
+  // stroke
+  stroke-dasharray: 2000;
+  stroke-dashoffset: 2000;
+  // pointer-events
+  pointer-events: none;
+}
+@media screen and (max-width: 1200px) {
+  .heroContainer {
+    .heading {
+      font-size: 7rem;
+    }
+  }
+  .textContainer {
+    .heading {
+      font-size: 7rem;
+    }
+  }
+  .heroSvg {
+    max-width: 70%;
+  }
+  .svg {
+    top: 200px;
+    left: 20%;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .heroContainer {
+    .heading {
+      font-size: 6.5rem;
+    }
+  }
+  .textContainer {
+    .heading {
+      font-size: 6.5rem;
+    }
+  }
+  .heroSvg {
+    max-width: 70%;
+  }
+  .svg {
+    top: 140px;
+    left: 18%;
+    width: 80%;
+    height: auto;
+  }
+}
+@media screen and (max-width: 768px) {
+  .heroContainer {
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: flex-start;
+    margin-left: 0.5rem;
+    .heading {
+      font-size: 7rem;
+      margin-top: 1rem;
+    }
+  }
+  .textContainer {
+    align-items: flex-start;
+    margin-left: 0.5rem;
+    margin-top: 0.2rem;
+    .heading {
+      font-size: 7rem;
+    }
+  }
+  .heroSvg {
+    max-width: 100%;
+  }
+  .svg {
+    top: 58vh;
+    left: 40%;
+  }
+}
+@media screen and (max-width: 600px) {
+  .container {
+    width: 100%;
+  }
+  .heroContainer {
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: flex-start;
+    margin-left: 1rem;
+    .heading {
+      font-size: 6rem;
+      margin-top: 1rem;
+    }
+  }
+  .textContainer {
+    align-items: flex-start;
+    margin-left: 1rem;
+    margin-top: 0.2rem;
+    .heading {
+      font-size: 5.5rem;
+    }
+  }
+  .heroSvg {
+    max-width: 100%;
+  }
+}
+@media screen and (max-width: 480px) {
+  .heroContainer {
+    .heading {
+      font-size: 5rem;
+      margin-top: 1rem;
+    }
+  }
+  .textContainer {
+    align-items: flex-start;
+    margin-left: 1rem;
+    margin-top: 0.2rem;
+    .heading {
+      font-size: 4rem;
+    }
+  }
+  .heroSvg {
+    max-width: 100%;
+  }
+  .svg {
+    top: 50vh;
+    left: 40%;
+  }
+}
+@media screen and (max-width: 320px) {
+  .heroContainer {
+    .heading {
+      font-size: 3rem;
+    }
+  }
+  .textContainer {
+    .heading {
+      font-size: 3rem;
+    }
+  }
+}
+
+.heroSvg {
+  width: 900px;
+  height: auto;
+  margin-top: 2rem;
+}
+
+// animateDash
+@keyframes animateDash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}

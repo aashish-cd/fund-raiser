@@ -1,5 +1,6 @@
 import Contact from '@/components/Contact/Contact'
 import Footer from '@/components/Footer/Footer'
+import Hero from '@/components/Hero/Hero'
 import HowWeWork from '@/components/HowWeWork/HowWeWork'
 import NavBar from '@/components/NavBar/Navbar'
 import styles from '../styles/Home.module.scss'
@@ -10,6 +11,7 @@ export default function Home() {
     <>
       <main className={`${styles.main}`}>
         <NavBar />
+        <Hero />
         <HowWeWork
           title={{
             mainText: 'OUR',
