@@ -19,9 +19,9 @@ const OurWork = (title: titletype) => {
             </h1>
           </div>
           <div className={styles.DemoWork}>
-            <div className={styles.Work1}>sujan</div>
-            <div className={styles.Work2}>aashis</div>
-            <div className={styles.Work3}>bishal</div>
+            <div className={styles.Work1}></div>
+            <div className={styles.Work2}></div>
+            <div className={styles.Work3}></div>
           </div>
           <div className={styles.SeeAllProject}></div>
         </div>
