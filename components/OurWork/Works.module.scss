@@ -6,6 +6,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-direction: column;
 
     .Upper {
       display: flex;
@@ -22,6 +23,38 @@
         letter-spacing: 0.05em;
         font-style: normal;
       }
+    }
+    .DemoWork {
+      display: grid;
+      grid-template-columns: 2;
+      grid-template-rows: 2;
+      grid-auto-columns: 1fr;
+      grid-auto-rows: 1fr;
+      gap: 0.1rem;
+    }
+    .Work1 {
+      background-image: url('Computer.svg');
+      background-repeat: no-repeat;
+      width: 994.19px;
+      height: 1082.99px;
+
+      grid-row: 1/3;
+    }
+    .Work2 {
+      width: 985.35px;
+      height: 657.26px;
+      background-image: url('bugHUnt.svg');
+      background-repeat: no-repeat;
+      grid-column: 2;
+      grid-row: 1;
+    }
+    .Work3 {
+      background-image: url('KushalDai.svg');
+      background-repeat: no-repeat;
+      width: 985.35px;
+      height: 657.26px;
+      grid-column: 2;
+      grid-row: 2;
     }
   }
 }
