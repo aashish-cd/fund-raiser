@@ -2,9 +2,10 @@ import React, { useState } from 'react'
 import styles from './Hero.module.scss'
 import { HeroSvg, ArrowSvg } from './HeroSvg'
 import Typewriter from 'typewriter-effect'
+import HeroInfo from './HeroInfo'
 
 const Hero = () => {
-  const animationText = ['DESIGN', 'DEVELOP', 'DELIVER']
+  const animationText = ['SIGN', 'VELOP', 'LIVER']
   const [index, setIndex] = useState<number>(1)
   setTimeout(() => {
     if (index < 2) setIndex(index + 1)
@@ -18,8 +19,8 @@ const Hero = () => {
         <HeroSvg />
       </div>
       <div className={styles.textContainer}>
+        <span className={styles.heading}>DE</span>
         <Typewriter
-          // className={styles.heading}
           options={{
             strings: animationText,
             loop: true,
@@ -28,19 +29,9 @@ const Hero = () => {
             wrapperClassName: styles.heading,
             cursor: '',
           }}
-          // onInit={(typewriter) => {
-          //   typewriter
-          //     .typeString(animationText[0])
-          //     .pauseFor(2000)
-          //     .deleteAll()
-          //     .typeString(animationText[1])
-          //     .pauseFor(2000)
-          //     .deleteAll()
-          //     .typeString(animationText[2])
-          //     .start()
-          // }}
         />
       </div>
+      <HeroInfo />
     </div>
   )
 }
