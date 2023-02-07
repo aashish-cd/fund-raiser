@@ -1,18 +1,20 @@
 .infoContainer {
   display: flex;
-
+  width: 100%;
   justify-content: center;
   align-items: center;
-  .svg {
-    width: 120%;
+  .svgContainer {
+    .svg {
+      width: 500px;
+    }
   }
+
   .textContainer {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-end;
     text-align: right;
-
     h1 {
       font-size: 4rem;
       font-weight: 500;
@@ -24,7 +26,104 @@
       font-size: 1rem;
       font-weight: 400;
       line-height: 27px;
-      width: 70%;
+      width: 75%;
+      margin-top: 1rem;
     }
   }
 }
+
+@media screen and (max-width: 1200px) {
+  .infoContainer {
+    .svgContainer {
+      .svg {
+        width: 400px;
+      }
+    }
+    .textContainer {
+      h1 {
+        font-size: 3rem;
+      }
+      p {
+        font-size: 0.9rem;
+        width: 80%;
+      }
+    }
+  }
+}
+@media screen and (max-width: 1024px) {
+  .infoContainer {
+    flex-direction: column;
+    .svgContainer {
+      .svg {
+        width: 80vw;
+      }
+    }
+
+    .textContainer {
+      align-items: center;
+      text-align: left;
+      h1 {
+        font-size: 3.5rem;
+        text-align: left;
+        width: 90%;
+      }
+      p {
+        width: 90%;
+      }
+    }
+  }
+}
+@media screen and (max-width: 768px) {
+  .infoContainer {
+    .textContainer {
+      h1 {
+        font-size: 3rem;
+      }
+    }
+  }
+}
+// @media screen and (max-width: 600px) {
+//   .infoContainer {
+//     .svgContainer {
+//       .svg {
+//       }
+//     }
+
+//     .textContainer {
+//       h1 {
+//       }
+//       p {
+//       }
+//     }
+//   }
+// }
+// @media screen and (max-width: 480px) {
+//   .infoContainer {
+//     .svgContainer {
+//       .svg {
+//       }
+//     }
+
+//     .textContainer {
+//       h1 {
+//       }
+//       p {
+//       }
+//     }
+//   }
+// }
+// @media screen and (max-width: 320px) {
+//   .infoContainer {
+//     .svgContainer {
+//       .svg {
+//       }
+//     }
+
+//     .textContainer {
+//       h1 {
+//       }
+//       p {
+//       }
+//     }
+//   }
+// }
