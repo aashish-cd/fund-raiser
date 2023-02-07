@@ -4,8 +4,10 @@ import { RocketSvg } from './HeroSvg'
 
 const HeroInfo = () => {
   return (
-    <div className={styles.infoContainer}>
-      <RocketSvg style={{ maxWidth: '120%' }} classes={styles.svg} />
+    <div className={`section-margin ${styles.infoContainer}`}>
+      <div className={styles.svgContainer}>
+        <RocketSvg classes={styles.svg} />
+      </div>
       <div className={styles.textContainer}>
         <h1>
           Innovative <span className="outline-gradient-text">Solutions</span>{' '}

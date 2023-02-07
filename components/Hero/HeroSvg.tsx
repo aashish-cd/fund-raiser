@@ -1508,15 +1508,15 @@ export const HeroSvg = () => (
     </defs>
   </svg>
 )
+// optional prop
 
-export const RocketSvg = ({ style, classes }: { style: any; classes: any }) => (
+export const RocketSvg = ({ classes }: { classes: any }) => (
   <>
     {' '}
     <svg
       viewBox="0 0 592 539"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      style={style}
       className={classes}
     >
       <mask
