@@ -37,9 +37,23 @@
       background-image: url('Computer.svg');
       background-repeat: no-repeat;
       width: 37.512rem;
-      height: 67.687rem;
+      height: 66.687rem;
 
       grid-row: 1/3;
+      display: flex;
+      flex-direction: column;
+
+      .ViewImage {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 50rem;
+        padding-top: 20px;
+      }
+      .Content {
+        display: flex;
+        justify-content: flex-start;
+      }
     }
     .Work2 {
       width: 46.897rem;

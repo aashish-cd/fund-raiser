@@ -4,6 +4,7 @@ type titletype = {
   mainText: string
   text: String
 }
+import cursor from './cursor.svg'
 
 const OurWork = (title: titletype) => {
   return (
@@ -19,7 +20,14 @@ const OurWork = (title: titletype) => {
             </h1>
           </div>
           <div className={styles.DemoWork}>
-            <div className={styles.Work1}></div>
+            <div className={styles.Work1}>
+              <div className={styles.ViewImage}>
+                <img src={cursor} />
+              </div>
+              <div className={styles.Content}>
+                Geda Jasto kura nagar na muji
+              </div>
+            </div>
             <div className={styles.Work2}></div>
             <div className={styles.Work3}></div>
           </div>
