@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './Works.module.scss'
+import Image from 'next/image'
 type titletype = {
   mainText: string
   text: String
@@ -22,10 +23,11 @@ const OurWork = (title: titletype) => {
           <div className={styles.DemoWork}>
             <div className={styles.Work1}>
               <div className={styles.ViewImage}>
-                <img src={cursor} />
+                <Image src={cursor} alt="" />
               </div>
               <div className={styles.Content}>
-                Geda Jasto kura nagar na muji
+                <div className={styles.title}>IN-DEPTH STORIES</div>
+                <div className={styles.workTag}>website development</div>
               </div>
             </div>
             <div className={styles.Work2}></div>

@@ -52,11 +52,41 @@
       }
       .Content {
         display: flex;
-        justify-content: flex-start;
-        background-color: aqua;
+        justify-content: center;
+        gap: 0.5rem;
+        flex-direction: column;
+
         height: 20%;
-        padding-left: 60px;
-        align-items: center;
+        padding-left: 3.5rem;
+        align-items: flex-start;
+        .title {
+          font-style: normal;
+          font-weight: 400;
+          font-size: 34.6557px;
+          line-height: 140%;
+          /* identical to box height, or 49px */
+
+          letter-spacing: 0.05em;
+          text-transform: uppercase;
+
+          /* text/default */
+
+          color: #ffffff;
+        }
+        .workTag {
+          font-style: normal;
+          font-weight: 400;
+          font-size: 14.0789px;
+          line-height: 100%;
+          /* identical to box height, or 14px */
+
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+
+          /* text/muted */
+
+          color: rgba(255, 255, 255, 0.7);
+        }
       }
     }
     .Work2 {
