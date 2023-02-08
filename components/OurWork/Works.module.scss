@@ -134,6 +134,7 @@
       .DemoWork {
         grid-template-columns: 1;
         grid-template-rows: 1;
+        row-gap: 1rem;
 
         .Work1 {
           width: 100%;
@@ -142,6 +143,9 @@
           grid-column: 1;
           .ViewImage {
             height: 100%;
+          }
+          .Content {
+            padding-bottom: 20px;
           }
         }
         .Work2 {
@@ -155,6 +159,9 @@
           height: 300px;
           grid-row: 3;
           grid-column: 1;
+          .Content {
+            padding-top: 5rem;
+          }
         }
       }
     }
