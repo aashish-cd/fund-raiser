@@ -105,6 +105,7 @@
     position: relative;
     height: 840px;
     background-size: auto 840px;
+    border-radius: 1rem;
 
     .ViewImage {
       position: absolute;
@@ -119,6 +120,7 @@
     width: 48%;
 
     .Work {
+      border-radius: 1rem;
       background-size: auto 400px;
       width: 100%;
       height: 400px;
@@ -173,7 +175,7 @@
   .flexContainer {
     flex-direction: column;
     .Work1 {
-      width: 100%;
+      width: 90%;
       height: 400px;
       margin-bottom: 40px;
     }
@@ -181,9 +183,12 @@
       padding: 0;
       margin: 0;
       width: 100%;
-
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       .Work {
-        width: 100%;
+        width: 90%;
         height: 400px;
       }
     }
@@ -219,6 +224,18 @@
           font-size: 2rem;
         }
       }
+    }
+  }
+}
+@media screen and (max-width: 380px) {
+  .Content {
+    padding-left: 1rem;
+    padding-bottom: 1rem;
+    .title {
+      font-size: 1.2rem;
+    }
+    .workTag {
+      font-size: 0.7rem;
     }
   }
 }
