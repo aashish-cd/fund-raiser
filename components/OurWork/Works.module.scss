@@ -133,14 +133,39 @@
     }
   }
 }
+@media screen and (max-width: 1200px) {
+  .Wraper {
+    .Maindiv {
+      .Upper {
+        width: 90%;
+        .heading {
+          font-size: 3rem;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 1024px) {
+  .Wraper {
+    .Maindiv {
+      .Upper {
+        width: 90%;
+        .heading {
+          font-size: 4rem;
+        }
+      }
+    }
+  }
+}
 
 @media screen and (max-width: 768px) {
   .Wraper {
     .Maindiv {
       .Upper {
-        margin-right: 0px;
+        width: 100%;
         .heading {
-          font-size: 2rem;
+          font-size: 3rem;
+          text-align: center;
         }
       }
     }
@@ -171,6 +196,29 @@
     }
     .workTag {
       font-size: 0.8rem;
+    }
+  }
+}
+@media screen and (max-width: 600px) {
+  .Wraper {
+    .Maindiv {
+      .Upper {
+        .heading {
+          font-size: 2.5rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .Wraper {
+    .Maindiv {
+      .Upper {
+        .heading {
+          font-size: 2rem;
+        }
+      }
     }
   }
 }
