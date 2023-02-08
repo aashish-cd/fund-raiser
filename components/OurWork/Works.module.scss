@@ -1,105 +1,55 @@
 .Wraper {
   width: 100%;
   height: 100%;
-  margin-top: 100px;
   .Maindiv {
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-direction: column;
+    width: 100%;
 
     .Upper {
       display: flex;
-      justify-content: flex-end;
+      justify-content: flex-start;
       align-items: flex-end;
 
       gap: 0.5rem;
 
-      width: 100%;
-      margin-right: 142px;
+      width: 90%;
+      // margin-right: 142px;
       .heading {
         font-size: 4rem;
         font-weight: 500;
         letter-spacing: 0.05em;
         font-style: normal;
+        width: 100%;
+        text-align: right;
       }
-    }
-    .DemoWork {
-      margin-top: 10px;
-      display: grid;
-      grid-template-columns: 2;
-      grid-template-rows: 2;
-
-      gap: 0.2rem;
-      column-gap: 1rem;
-    }
-    .Work1 {
-      background-image: url('Computer.svg');
-      background-repeat: no-repeat;
-      width: 37.512rem;
-      height: 66.687rem;
-
-      grid-row: 1/3;
-      display: flex;
-      flex-direction: column;
-
-      .ViewImage {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 50rem;
-        padding-top: 20px;
-      }
-    }
-    .Work2 {
-      width: 46.897rem;
-      height: 32.813rem;
-      background-image: url('bugHUnt.svg');
-      background-repeat: no-repeat;
-      grid-column: 2;
-      grid-row: 1;
-    }
-    .Work3 {
-      background-image: url('KushalDai.svg');
-      background-repeat: no-repeat;
-      width: 46.897rem;
-      height: 41.079rem;
-      grid-column: 2;
-      grid-row: 2;
     }
   }
 }
-.dummy1 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 70%;
-  padding-top: 20px;
-}
-.dummy2 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 55%;
-  padding-top: 20px;
-}
+
 .Content {
   display: flex;
-  justify-content: center;
+  width: 100%;
+  height: 100%;
+  justify-content: flex-end;
+
   gap: 0.5rem;
   flex-direction: column;
 
-  height: 20%;
-  padding-left: 3.5rem;
+  // height: 20%;
+  padding-left: 3rem;
+  padding-bottom: 3rem;
   align-items: flex-start;
   .title {
     font-style: normal;
-    font-weight: 400;
-    font-size: 34.6557px;
+    font-weight: 700;
+    font-size: 1.8rem;
     line-height: 140%;
     /* identical to box height, or 49px */
 
-    letter-spacing: 0.05em;
+    letter-spacing: 1.0757px;
     text-transform: uppercase;
 
     /* text/default */
@@ -109,7 +59,7 @@
   .workTag {
     font-style: normal;
     font-weight: 400;
-    font-size: 14.0789px;
+    font-size: 0.9rem;
     line-height: 100%;
     /* identical to box height, or 14px */
 
@@ -122,6 +72,51 @@
   }
 }
 
+.flexContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin-top: 1rem;
+
+  .Work1 {
+    width: 48%;
+
+    background-image: url('Computer.svg');
+    position: relative;
+    height: 840px;
+    background-size: auto 840px;
+
+    .ViewImage {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+  .column {
+    padding: 0;
+    margin: 0;
+    width: 48%;
+
+    .Work {
+      background-size: auto 400px;
+      width: 100%;
+      height: 400px;
+    }
+    .Work2 {
+      margin-bottom: 40px;
+      background-image: url('bugHUnt.svg');
+    }
+    .Work3 {
+      margin-bottom: 0;
+      background-image: url('KushalDai.svg');
+    }
+  }
+}
+
 @media screen and (max-width: 768px) {
   .Wraper {
     .Maindiv {
@@ -131,39 +126,33 @@
           font-size: 2rem;
         }
       }
-      .DemoWork {
-        grid-template-columns: 1;
-        grid-template-rows: 1;
-        row-gap: 1rem;
+    }
+  }
+  .flexContainer {
+    flex-direction: column;
+    .Work1 {
+      width: 100%;
+      margin-bottom: 40px;
+    }
+    .column {
+      padding: 0;
+      margin: 0;
+      width: 100%;
 
-        .Work1 {
-          width: 100%;
-          height: 300px;
-          grid-row: 1;
-          grid-column: 1;
-          .ViewImage {
-            height: 100%;
-          }
-          .Content {
-            padding-bottom: 20px;
-          }
-        }
-        .Work2 {
-          width: 100%;
-          height: 300px;
-          grid-row: 2;
-          grid-column: 1;
-        }
-        .Work3 {
-          width: 100%;
-          height: 300px;
-          grid-row: 3;
-          grid-column: 1;
-          .Content {
-            padding-top: 5rem;
-          }
-        }
+      .Work {
+        width: 100%;
+        height: 400px;
       }
+    }
+  }
+  .Content {
+    padding-left: 2rem;
+    padding-bottom: 2rem;
+    .title {
+      font-size: 1.5rem;
+    }
+    .workTag {
+      font-size: 0.8rem;
     }
   }
 }
