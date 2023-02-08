@@ -108,6 +108,10 @@ body {
 .primary-text {
   color: $primary-text-color;
 }
+.primary-text:hover {
+  color: $primary-logo-color;
+  transition: 0.3s;
+}
 .secondary-text {
   color: $secondary-text-color;
 }

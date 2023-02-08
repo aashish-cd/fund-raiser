@@ -1,6 +1,23 @@
 .Wraper {
   width: 100%;
   height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  .SeeAllProject {
+    text-align: center;
+    font-size: 1.1rem;
+    margin-top: 2rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+
+    text-decoration: underline;
+    text-underline-offset: 0.5em;
+    cursor: pointer;
+    transition: 0.3s;
+  }
   .Maindiv {
     display: flex;
     justify-content: space-between;

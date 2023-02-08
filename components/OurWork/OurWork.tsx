@@ -51,8 +51,9 @@ const OurWork = (title: titletype) => {
               </div>
             </div>
           </div>
-
-          <div className={styles.SeeAllProject}></div>
+        </div>
+        <div className={styles.SeeAllProject + ' primary-text'}>
+          SEE ALL PROJECTS
         </div>
       </div>
     </>
