@@ -10,7 +10,7 @@ import cursor from './cursor.svg'
 const OurWork = (title: titletype) => {
   return (
     <>
-      <div className={styles.Wraper}>
+      <div className={`section-margin ${styles.Wraper}`}>
         <div className={styles.Maindiv}>
           <div className={styles.Upper}>
             <h1 className={styles.heading}>
@@ -20,7 +20,7 @@ const OurWork = (title: titletype) => {
               {title.text}
             </h1>
           </div>
-          <div className={styles.DemoWork}>
+          <div className={styles.flexContainer}>
             <div className={styles.Work1}>
               <div className={styles.ViewImage}>
                 <Image src={cursor} alt="" />
@@ -30,23 +30,28 @@ const OurWork = (title: titletype) => {
                 <div className={styles.workTag}>website development</div>
               </div>
             </div>
-            <div className={styles.Work2}>
-              <div className={styles.dummy1}></div>
-              <div className={styles.Content}>
-                <div className={styles.title}>AR BUG HUNT Game</div>
-                <div className={styles.workTag}>
-                  Unity x AR Game Development
+            <div className={styles.column}>
+              <div className={`${styles.Work} ${styles.Work2}`}>
+                <div className={styles.dummy1}></div>
+                <div className={styles.Content}>
+                  <div className={styles.title}>AR BUG HUNT Game</div>
+                  <div className={styles.workTag}>
+                    Unity x AR Game Development
+                  </div>
+                </div>
+              </div>
+              <div className={`${styles.Work} ${styles.Work3}`}>
+                <div className={styles.dummy1}></div>
+                <div className={styles.Content}>
+                  <div className={styles.title}>Branding Materials</div>
+                  <div className={styles.workTag}>
+                    Logo and Brand Guidelines
+                  </div>
                 </div>
               </div>
             </div>
-            <div className={styles.Work3}>
-              <div className={styles.dummy2}></div>
-              <div className={styles.Content}>
-                <div className={styles.title}>Branding Materials</div>
-                <div className={styles.workTag}>Logo and Brand Guidelines</div>
-              </div>
-            </div>
           </div>
+
           <div className={styles.SeeAllProject}></div>
         </div>
       </div>
