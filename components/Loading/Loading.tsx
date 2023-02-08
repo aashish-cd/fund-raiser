@@ -23,7 +23,7 @@ const Loading = () => {
               height={39}
               key={item}
               style={{
-                animationDelay: `${1 + item * 0.3}s`,
+                animationDelay: `${0.3 + item * 0.3}s`,
               }}
             />
           ))}
