@@ -3,7 +3,7 @@ import styles from './Contact.module.scss'
 
 const Contact = () => {
   return (
-    <div className={styles.contact}>
+    <div className={`section-margin ${styles.contact}`}>
       <div className={styles.connectPart}>
         <h1>
           <span className="outline-gradient-text">Let&apos;s</span> Connect
@@ -16,22 +16,22 @@ const Contact = () => {
           <input id="name" placeholder="Your Full Name" />
         </div>
         <div className={styles.eachPart}>
-          <label htmlFor="name">Email</label>
-          <input id="name" placeholder="Your Email" />
+          <label htmlFor="email">Email</label>
+          <input id="email" placeholder="Your Email" />
         </div>
         <div className={styles.eachPart}>
-          <label htmlFor="name">Subject</label>
-          <input id="name" placeholder="Your Company" />
+          <label htmlFor="company">Subject</label>
+          <input id="company" placeholder="Your Company" />
         </div>
         <div className={styles.eachPart}>
-          <label htmlFor="name">Company Name</label>
-          <input id="name" placeholder="Subject to discuss on" />
+          <label htmlFor="subject">Company Name</label>
+          <input id="subject" placeholder="Subject to discuss on" />
         </div>
       </div>
       <div className={styles.messageContainer}>
-        <label htmlFor="name">Message</label>
-        <textarea id="name" placeholder="Your Message" rows={10} />
-        <button>Send Message</button>
+        <label htmlFor="message">Message</label>
+        <textarea id="message" placeholder="Your Message" />
+        <button className="primary-button">Send Message</button>
       </div>
     </div>
   )

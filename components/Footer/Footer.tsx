@@ -5,7 +5,7 @@ import Image from 'next/image'
 const Footer = () => {
   return (
     <div className={styles.footer + ' primary-text'}>
-      <hr className={styles.horizontalline} />
+      <hr className={styles.horizontalline + ' section-margin'} />
       <div className={styles.footerContainer}>
         <div className={styles.mainContainer}>
           <div>
@@ -34,6 +34,7 @@ const Footer = () => {
                     alt="mantrapic"
                     width={16.67}
                     height={16.67}
+                    className={styles.image}
                   />
                 </div>
                 <div className={styles.imageContainer}>
@@ -42,6 +43,7 @@ const Footer = () => {
                     alt="mantrapic"
                     width={16.67}
                     height={16.67}
+                    className={styles.image}
                   />
                 </div>
                 <div className={styles.imageContainer}>
@@ -50,6 +52,7 @@ const Footer = () => {
                     alt="mantrapic"
                     width={16.67}
                     height={16.67}
+                    className={styles.image}
                   />
                 </div>
                 <div className={styles.imageContainer}>
@@ -58,6 +61,7 @@ const Footer = () => {
                     alt="mantrapic"
                     width={16.67}
                     height={16.67}
+                    className={styles.image}
                   />
                 </div>
               </div>
@@ -65,7 +69,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <hr className={styles.horizontalline} />
+      <hr className={styles.horizontalline} style={{ marginTop: '2rem' }} />
       <div className={styles.totalFooter}>
         <p>&copy; 2023 Designed and developed by team mantra</p>
         <div className={styles.privacyAndImprint}>

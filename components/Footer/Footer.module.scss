@@ -7,11 +7,13 @@ $background-gradient-color: -webkit-linear-gradient(
 .footer {
   margin: 0px;
   margin-left: 0px;
+  width: 90%;
   .horizontalline {
-    width: 100vw;
+    // width: 100vw;
     background-color: rgba(255, 255, 255, 0.12);
-    height: 1px;
+    height: 1.5px;
     border: none;
+    margin-bottom: 1rem;
   }
   .footerContainer {
     display: grid;
@@ -21,18 +23,20 @@ $background-gradient-color: -webkit-linear-gradient(
       flex-direction: row;
       align-items: center;
       justify-content: space-around;
-      height: 25rem;
+      // height: 25rem;
       .insideMainContainer {
         display: flex;
         flex-direction: column;
         align-items: left;
         justify-content: space-around;
         gap: 7rem;
+        margin-top: 2rem;
         .firstContainer {
           display: flex;
           flex-direction: row;
-          text-align: left;
+          text-align: center;
           justify-content: left;
+          align-items: center;
           gap: 6rem;
           font-family: 'ClashDisplay-Variable';
           font-weight: 500;
@@ -54,18 +58,29 @@ $background-gradient-color: -webkit-linear-gradient(
             display: flex;
             flex-direction: row;
             align-items: center;
-            justify-content: left;
+            justify-content: center;
             gap: 3rem;
             .imageContainer {
               height: 3.3rem;
               width: 3.3rem;
               border-radius: 50%;
-              border: double 3px transparent;
-              background-image: linear-gradient(white, white),
-                $background-gradient-color;
-              background-origin: border-box;
-              background-clip: content-box, border-box;
-              background: transparent;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              border: 2px solid #696fb2;
+              .image {
+                height: 1.3rem;
+                width: 1.3rem;
+              }
+              // color: #0f0f0f;
+              // background: -webkit-linear-gradient(
+              //   101.4deg,
+              //   #7635b3 0%,
+              //   #696fb2 100%
+              // );
+              // background-clip: text;
+              // -webkit-text-stroke: transparent;
+              // -webkit-text-stroke-width: 3px;
             }
           }
         }
@@ -168,6 +183,7 @@ $background-gradient-color: -webkit-linear-gradient(
 }
 @media screen and (max-width: 768px) {
   .footer {
+    width: 100%;
     .footerContainer {
       .mainContainer {
         display: flex;

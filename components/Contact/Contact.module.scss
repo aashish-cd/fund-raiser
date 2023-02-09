@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 .contact {
-  padding: 2rem;
   flex-wrap: wrap;
   // text-align: center;
+  width: 90%;
   .connectPart {
     text-align: right;
     margin-left: auto;
@@ -19,7 +19,7 @@
     }
     p {
       font-family: 'Poppins';
-      font-size: 1.2rem;
+      font-size: 1rem;
       font-weight: 300;
       line-height: 1.7rem;
       color: #c0c0c0;
@@ -38,10 +38,10 @@
     gap: 1rem;
     input {
       background-color: transparent;
-      padding: 1rem 1.5rem;
+      padding: 16px 26px;
       border: 2px solid rgba(255, 255, 255, 0.12);
       border-radius: 5px;
-      width: 40vw;
+      // width: 40vw;
       font-family: 'Poppins';
       font-size: 1rem;
     }
@@ -64,8 +64,11 @@
     padding: 16px 26px;
     border: 2px solid rgba(255, 255, 255, 0.12);
     border-radius: 5px;
-    width: 81.2vw;
+    // width: 81.2vw;
+
+    height: 300px;
     font-size: 1rem;
+    resize: none;
   }
   button {
     width: 50%;
@@ -115,7 +118,7 @@
     flex-direction: column;
     .eachPart {
       input {
-        width: 81.2vw;
+        // width: 81.2vw;
       }
     }
   }
