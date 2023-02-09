@@ -41,14 +41,16 @@ const NavBar = () => {
             <div className={styles.onmobileonly}>
               <div className={styles.CancelOrOpen}>
                 {showSidebar ? (
-                  <button onClick={reset}>baby</button>
+                  <button onClick={reset}>X</button>
                 ) : (
-                  <button onClick={set}>bubu</button>
+                  <button onClick={set}>open</button>
                 )}
               </div>
-              {<MobileSlideInBar showSidebar={showSidebar} />}
             </div>
           </div>
+        </div>
+        <div className={styles.NavBarmbl}>
+          {<MobileSlideInBar showSidebar={showSidebar} />}
         </div>
       </nav>
     </>

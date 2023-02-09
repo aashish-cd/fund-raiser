@@ -4,6 +4,7 @@
 }
 .NavWrapper {
   width: 100%;
+  display: flex;
 }
 .MainDiv {
   width: 100%;
@@ -36,6 +37,7 @@
 .onmobileonly {
   display: none;
 }
+
 .CancelOrOpen {
   display: flex;
   justify-content: center;

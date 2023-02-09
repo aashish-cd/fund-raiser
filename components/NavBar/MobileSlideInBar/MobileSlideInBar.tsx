@@ -10,13 +10,13 @@ const MobileSlideInBar = ({ showSidebar }: { showSidebar: boolean }) => {
         showSidebar ? styles.showSidebar : styles.hideSidebar
       }`}
     >
-      <div className={'$(styles.navLinks) primary-background-color'}>
-        sujan
-        {/* {nav.map((item, idx) => (
-          <Link href={item.link} key={idx}>
-            {item.name}
-          </Link>
-        ))} */}
+      <div className={styles.navLinks}>
+        <p>About</p>
+        <p>Projects</p>
+        <p>Services</p>
+        <button className={'${styles.Touchbt} primary-button'}>
+          Get In Touch
+        </button>
       </div>
     </div>
   )

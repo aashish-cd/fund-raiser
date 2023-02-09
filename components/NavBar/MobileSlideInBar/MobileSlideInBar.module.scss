@@ -1,21 +1,32 @@
 .SidebarContainer {
   position: fixed;
   height: 100vh;
-  z-index: -2;
+  z-index: 1;
   width: 100vw;
   left: -0;
   top: 0rem;
-  padding: 7rem 2rem;
+  padding-left: 2rem;
+  padding-top: 1rem;
+  padding-right: 2rem;
+
+  margin-top: 100px;
   .navLinks {
     display: flex;
+
     flex-direction: column;
+    justify-content: space-between;
+
     gap: 1rem;
     font-size: 1.2rem;
     a {
       color: white;
       text-decoration: none;
     }
+    .Touchbt {
+      width: 5rem;
+    }
   }
+  background-color: #0f0f0f;
 }
 
 .showSidebar {
