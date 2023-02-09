@@ -2,7 +2,10 @@
   width: 152px;
   height: 40px;
 }
-
+.NavWrapper {
+  width: 100%;
+  display: flex;
+}
 .MainDiv {
   width: 100%;
   padding-top: 15px;
@@ -29,5 +32,30 @@
       flex-wrap: wrap;
       gap: 2rem;
     }
+  }
+}
+.onmobileonly {
+  display: none;
+}
+
+.CancelOrOpen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  height: 40px;
+  width: 40px;
+}
+
+@media (max-width: 950px) {
+  .MainDiv {
+    .Inter {
+      .ItemsSection {
+        display: none;
+      }
+    }
+  }
+  .onmobileonly {
+    display: block;
   }
 }
