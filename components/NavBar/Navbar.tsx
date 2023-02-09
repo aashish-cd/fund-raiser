@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import styles from './NavBar.module.scss'
 import Image from 'next/image'
+import MobileSlideInBar from './MobileSlideInBar/MobileSlideInBar'
 
 const NavBar = () => {
   const [showSidebar, setShowSidebar] = useState(false)
   const reset = () => setShowSidebar(() => false)
   const set = () => setShowSidebar(() => true)
+  console.log(showSidebar)
   useEffect(() => {
     if (typeof window !== 'undefined') {
       window.addEventListener('resize', reset)
@@ -36,14 +38,15 @@ const NavBar = () => {
                 Get In Touch
               </button>
             </div>
-          </div>
-          <div className={styles.MobileViewOnly}>
-            <div className={styles.CancelOrOpen}>
-              {showSidebar ? (
-                <button onClick={set} />
-              ) : (
-                <button onClick={reset} />
-              )}
+            <div className={styles.onmobileonly}>
+              <div className={styles.CancelOrOpen}>
+                {showSidebar ? (
+                  <button onClick={reset}>baby</button>
+                ) : (
+                  <button onClick={set}>bubu</button>
+                )}
+              </div>
+              {<MobileSlideInBar showSidebar={showSidebar} />}
             </div>
           </div>
         </div>

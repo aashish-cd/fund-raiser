@@ -1,0 +1,44 @@
+.SidebarContainer {
+  position: fixed;
+  height: 100vh;
+  z-index: -2;
+  width: 100vw;
+  left: -0;
+  top: 0rem;
+  padding: 7rem 2rem;
+  .navLinks {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    font-size: 1.2rem;
+    a {
+      color: white;
+      text-decoration: none;
+    }
+  }
+}
+
+.showSidebar {
+  animation: showSidebar 0.5s ease-out;
+  animation-fill-mode: forwards;
+}
+.hideSidebar {
+  animation: hideSidebar 0.5s ease-out;
+  animation-fill-mode: forwards;
+}
+@keyframes showSidebar {
+  from {
+    left: -100vw;
+  }
+  to {
+    left: 0;
+  }
+}
+@keyframes hideSidebar {
+  from {
+    left: 0;
+  }
+  to {
+    left: -100vw;
+  }
+}

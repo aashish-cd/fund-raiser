@@ -33,3 +33,27 @@
     }
   }
 }
+.onmobileonly {
+  display: none;
+}
+.CancelOrOpen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  height: 40px;
+  width: 40px;
+}
+
+@media (max-width: 950px) {
+  .MainDiv {
+    .Inter {
+      .ItemsSection {
+        display: none;
+      }
+    }
+  }
+  .onmobileonly {
+    display: block;
+  }
+}
