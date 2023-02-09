@@ -6,4 +6,13 @@
   margin: auto;
   max-width: 1500px;
   min-width: 320px;
+  animation: show 1s;
+  @keyframes show {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 }

@@ -10,10 +10,10 @@ const MobileSlideInBar = ({ showSidebar }: { showSidebar: boolean }) => {
         showSidebar ? styles.showSidebar : styles.hideSidebar
       }`}
     >
-      <div className={styles.navLinks}>
-        <p>About</p>
-        <p>Projects</p>
-        <p>Services</p>
+      <div className={` ${styles.navLinks}`}>
+        <p className="primary-text">About</p>
+        <p className="primary-text">Projects</p>
+        <p className="primary-text">Services</p>
         <button className={'${styles.Touchbt} primary-button'}>
           Get In Touch
         </button>

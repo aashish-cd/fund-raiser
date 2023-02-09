@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import styles from './NavBar.module.scss'
 import Image from 'next/image'
 import MobileSlideInBar from './MobileSlideInBar/MobileSlideInBar'
+import { AiOutlineMenu } from 'react-icons/ai'
+import { FaTimes } from 'react-icons/fa'
 
 const NavBar = () => {
   const [showSidebar, setShowSidebar] = useState(false)
@@ -31,20 +33,25 @@ const NavBar = () => {
               />
             </div>
             <div className={styles.ItemsSection}>
-              <p>About</p>
-              <p>Projects</p>
-              <p>Services</p>
+              <p className="primary-text">About</p>
+              <p className="primary-text">Projects</p>
+              <p className="primary-text">Services</p>
               <button className={'${styles.Touchbt} primary-button'}>
                 Get In Touch
               </button>
             </div>
             <div className={styles.onmobileonly}>
-              <div className={styles.CancelOrOpen}>
-                {showSidebar ? (
-                  <button onClick={reset}>X</button>
-                ) : (
-                  <button onClick={set}>open</button>
-                )}
+              <div
+                className={`${styles.CancelOrOpen}`}
+                onClick={() => setShowSidebar(!showSidebar)}
+              >
+                <p className="primary-text">
+                  {showSidebar ? (
+                    <FaTimes className={` ${styles.icon}`} />
+                  ) : (
+                    <AiOutlineMenu className={` ${styles.icon}`} />
+                  )}
+                </p>
               </div>
             </div>
           </div>
