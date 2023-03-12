@@ -1,20 +1,20 @@
-import React from 'react';
+import React from 'react'
 
 const Privacy = () => {
   return (
     <>
-      <div className='page'>
-        <div className='header'>
-          <div className='container'>
-            <p className='title'>Privacy Policy for AceWall</p>
+      <div className="page">
+        <div className="header">
+          <div className="container">
+            <p className="title">Privacy Policy for AceWall</p>
           </div>
         </div>
 
-        <div className='translations-list-container'>
-          <div className='container'>
-            <ul className='translations-list'>
-              <li className='en translations-list-item'>
-                <a className='tab-link active' href='#en'>
+        <div className="translations-list-container">
+          <div className="container">
+            <ul className="translations-list">
+              <li className="en translations-list-item">
+                <a className="tab-link active" href="#en">
                   English
                 </a>
               </li>
@@ -22,11 +22,11 @@ const Privacy = () => {
           </div>
         </div>
 
-        <div className='translations-content-container'>
-          <div className='container'>
+        <div className="translations-content-container">
+          <div className="container">
             <div
-              className='tab-content translations-content-item en visible'
-              id='en'
+              className="tab-content translations-content-item en visible"
+              id="en"
             >
               <h1>Privacy Policy</h1>
               <p>Last updated: January 08, 2022</p>
@@ -450,8 +450,8 @@ const Privacy = () => {
                   <p>
                     By email:{' '}
                     <a
-                      href='mailto:mantralabs.tech@gmail.com'
-                      className='__cf_email__'
+                      href="mailto:mantralabs.tech@gmail.com"
+                      className="__cf_email__"
                     >
                       [email&#160;protected]
                     </a>
@@ -461,8 +461,8 @@ const Privacy = () => {
                   <p>
                     By visiting this page on our website:{' '}
                     <a
-                      href='https://mantralab.tech'
-                      rel='external nofollow noopener'
+                      href="https://mantralab.tech"
+                      rel="external nofollow noopener"
                     >
                       https://mantralab.tech
                     </a>
@@ -477,7 +477,7 @@ const Privacy = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Privacy;
+export default Privacy
