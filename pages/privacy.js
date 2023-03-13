@@ -44,9 +44,9 @@ const Privacy = () => {
               </p>
               <h1>⚠️WE DO NOT CONVEY OFFICIAL GOVERNMENT NEWS⚠️</h1>
               <p>
-                {' '}
                 The news we provide is collected from various sources and we are
-                not any government authority.
+                not any government authority. And we also provide the source of
+                data for reference.
               </p>
               <h1>Interpretation and Definitions</h1>
               <h2>Interpretation</h2>
