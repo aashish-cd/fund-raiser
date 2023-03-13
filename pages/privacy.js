@@ -42,6 +42,12 @@ const Privacy = () => {
                 information in accordance with this Privacy Policy. This Privacy
                 Policy has been created with the help of the .
               </p>
+              <h1>⚠️WE DO NOT CONVEY OFFICIAL GOVERNMENT NEWS⚠️</h1>
+              <p>
+                {' '}
+                The news we provide is collected from various sources and we are
+                not any government authority.
+              </p>
               <h1>Interpretation and Definitions</h1>
               <h2>Interpretation</h2>
               <p>
