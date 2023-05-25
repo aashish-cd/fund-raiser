@@ -10,7 +10,7 @@ const Footer = () => {
         <div className={styles.mainContainer}>
           <div>
             <Image
-              src={'/Mantralogo.png'}
+              src={'/logo.png'}
               className={styles.mantraPic}
               alt="mantrapic"
               width={319}
@@ -19,11 +19,11 @@ const Footer = () => {
           </div>
           <div className={styles.insideMainContainer}>
             <div className={styles.firstContainer}>
-              <a className={styles.firstContainerTitle}>Pages</a>
-              <a className={styles.marginLeft}>About</a>
-              <a>Services</a>
-              <a>Projects</a>
-              <a>Contact</a>
+              <a className={'primary-text'}>Pages</a>
+              <a className={'primary-text'}>About</a>
+              <a className={'primary-text'}>Services</a>
+              <a className={'primary-text'}>Projects</a>
+              <a className={'primary-text'}>Contact</a>
             </div>
             <div className={styles.firstContainer}>
               <a className={styles.firstContainerTitle}>Social Media</a>

@@ -25,11 +25,11 @@ const NavBar = () => {
           <div className={styles.Inter}>
             <div className={styles.logoSection}>
               <Image
-                src={'/Mantralogo.png'}
+                src={'/logo.png'}
                 className={styles.mantraPic}
                 alt="mantrapic"
-                width={178}
-                height={59}
+                width={100 * 2}
+                height={22.7 * 2}
               />
             </div>
             <div className={styles.ItemsSection}>

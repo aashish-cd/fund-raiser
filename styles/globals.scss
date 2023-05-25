@@ -1,15 +1,15 @@
-$primary-background-color: #0f0f0f;
+$primary-background-color: #eee;
 $background-gradient-color: -webkit-linear-gradient(
   101.4deg,
   #7635b3 0%,
   #696fb2 100%
 );
-$primary-text-color: #fff;
-$secondary-text-color: #c0c0c0;
-$placeholder-text-color: rgba(255, 255, 255, 0.5);
-$horizontal-line-color: rgba(255, 255, 255, 0.12);
-$primary-logo-color: #7635b3;
-$secondary-logo-color: #696fb2;
+$primary-text-color: #000;
+$secondary-text-color: #333;
+$placeholder-text-color: rgba(0, 0, 0, 0.5);
+$horizontal-line-color: rgba(0, 0, 0, 0.12);
+$primary-logo-color: #000c81;
+$secondary-logo-color: #000b7e;
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap');
 @font-face {
   font-family: 'ClashDisplay-Variable';
