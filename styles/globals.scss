@@ -127,7 +127,6 @@ body {
 }
 
 .primary-button {
-  transition: 0.3s ease-in-out;
   color: $primary-text-color;
   background: $background-gradient-color;
   border: none;
@@ -141,11 +140,34 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.2em;
   cursor: pointer;
+  transition: 0.5s all ease-in-out;
+}
+.secondary-button {
+  transition: 0.3s ease-in-out;
+  background: $primary-text-color;
+  color: $background-gradient-color;
+  border: none;
+  gap: 10px;
+  border-radius: 5px;
+  padding: 12px 16px;
+  text-align: center;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  cursor: pointer;
+  transition: 0.5s all ease-in-out;
 }
 .primary-button:hover {
-  transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out all;
   background: $primary-background-color;
   color: $primary-logo-color;
+}
+.secondary-button:hover {
+  transition: 0.5s ease-in-out;
+  color: $primary-background-color;
+  background: $primary-logo-color;
 }
 .section-margin {
   margin-top: 5rem;

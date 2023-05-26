@@ -1,6 +1,8 @@
 import React from 'react'
 import styles from './Footer.module.scss'
 import Image from 'next/image'
+import { navLinks } from '../NavBar/Navbar'
+import Link from 'next/link'
 
 const Footer = () => {
   return (
@@ -19,64 +21,51 @@ const Footer = () => {
           </div>
           <div className={styles.insideMainContainer}>
             <div className={styles.firstContainer}>
-              <a className={'primary-text'}>Pages</a>
-              <a className={'primary-text'}>About</a>
-              <a className={'primary-text'}>Services</a>
-              <a className={'primary-text'}>Projects</a>
-              <a className={'primary-text'}>Contact</a>
-            </div>
-            <div className={styles.firstContainer}>
-              <a className={styles.firstContainerTitle}>Social Media</a>
-              <div className={styles.imageWrapper}>
-                <div className={styles.imageContainer}>
-                  <Image
-                    src={'/Facebook.svg'}
-                    alt="mantrapic"
-                    width={16.67}
-                    height={16.67}
-                    className={styles.image}
-                  />
-                </div>
-                <div className={styles.imageContainer}>
-                  <Image
-                    src={'/Instagram.svg'}
-                    alt="mantrapic"
-                    width={16.67}
-                    height={16.67}
-                    className={styles.image}
-                  />
-                </div>
-                <div className={styles.imageContainer}>
-                  <Image
-                    src={'/Linkedin.svg'}
-                    alt="mantrapic"
-                    width={16.67}
-                    height={16.67}
-                    className={styles.image}
-                  />
-                </div>
-                <div className={styles.imageContainer}>
-                  <Image
-                    src={'/Dribble.svg'}
-                    alt="mantrapic"
-                    width={16.67}
-                    height={16.67}
-                    className={styles.image}
-                  />
-                </div>
-              </div>
+              {navLinks.map((nav, index) => (
+                <Link
+                  href={nav.link}
+                  key={index}
+                  style={{ textDecoration: 'none' }}
+                >
+                  <p className={'primary-text'}>{nav.name}</p>
+                </Link>
+              ))}
             </div>
           </div>
         </div>
       </div>
-      <hr className={styles.horizontalline} style={{ marginTop: '2rem' }} />
-      <div className={styles.totalFooter}>
-        <p>&copy; 2023 Designed and developed by team mantra</p>
-        <div className={styles.privacyAndImprint}>
-          <a>Privacy</a>
-          <a>Imprint</a>
+
+      <p
+        className="primary-text"
+        style={{
+          textAlign: 'center',
+          marginTop: '2rem',
+          position: 'sticky',
+          bottom: 0,
+          width: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+          fontSize: '1.2rem',
+        }}
+      >
+        {`A Minor Project on 'Fund Raiser Using RNN' `}
+        <div
+          style={{
+            marginTop: '1.5rem',
+            fontSize: '1rem',
+            textAlign: 'left',
+            width: '60%',
+          }}
+        >
+          <p>Team Members :</p>
+          <p>Aashish Bhatt</p>
+          <p>Bikram Bashyal</p>
+          <p>Manoj Kumar Chauhan</p>
+          <p>Willson Ghimire</p>
         </div>
-      </div>
+      </p>
     </div>
   )
 }

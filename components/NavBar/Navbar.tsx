@@ -4,6 +4,7 @@ import Image from 'next/image'
 import MobileSlideInBar from './MobileSlideInBar/MobileSlideInBar'
 import { AiOutlineMenu } from 'react-icons/ai'
 import { FaTimes } from 'react-icons/fa'
+import Link from 'next/link'
 
 const NavBar = () => {
   const [showSidebar, setShowSidebar] = useState(false)
@@ -33,12 +34,17 @@ const NavBar = () => {
               />
             </div>
             <div className={styles.ItemsSection}>
-              <p className="primary-text">About</p>
-              <p className="primary-text">Projects</p>
-              <p className="primary-text">Services</p>
-              <button className={'${styles.Touchbt} primary-button'}>
-                Get In Touch
-              </button>
+              {navLinks.map((nav, index) => (
+                <Link
+                  href={nav.link}
+                  key={index}
+                  style={{ textDecoration: 'none' }}
+                >
+                  <p className="primary-text">{nav.name}</p>
+                </Link>
+              ))}
+
+              <button className={' primary-button'}>Sign In</button>
             </div>
             <div className={styles.onmobileonly}>
               <div
@@ -63,4 +69,26 @@ const NavBar = () => {
     </>
   )
 }
+export const navLinks = [
+  {
+    name: 'Home',
+    link: '/',
+  },
+  {
+    name: 'Charity',
+    link: '/charity',
+  },
+  {
+    name: 'Disaster',
+    link: '/disaster',
+  },
+  {
+    name: 'Event',
+    link: '/event',
+  },
+  {
+    name: 'Donation',
+    link: '/donation',
+  },
+]
 export default NavBar

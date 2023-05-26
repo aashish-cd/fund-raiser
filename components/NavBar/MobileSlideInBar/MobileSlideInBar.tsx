@@ -2,6 +2,7 @@ import React from 'react'
 import styles from './MobileSlideInBar.module.scss'
 
 import Link from 'next/link'
+import { navLinks } from '../Navbar'
 
 const MobileSlideInBar = ({ showSidebar }: { showSidebar: boolean }) => {
   return (
@@ -11,12 +12,13 @@ const MobileSlideInBar = ({ showSidebar }: { showSidebar: boolean }) => {
       }`}
     >
       <div className={` ${styles.navLinks}`}>
-        <p className="primary-text">About</p>
-        <p className="primary-text">Projects</p>
-        <p className="primary-text">Services</p>
-        <button className={'${styles.Touchbt} primary-button'}>
-          Get In Touch
-        </button>
+        {navLinks.map((nav, index) => (
+          <Link href={nav.link} key={index} style={{ textDecoration: 'none' }}>
+            <p className="primary-text">{nav.name}</p>
+          </Link>
+        ))}
+
+        <button className={'primary-button'}>Sign In</button>
       </div>
     </div>
   )

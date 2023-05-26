@@ -1,22 +1,164 @@
 .container {
-  width: 90%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-image: url('../Assets/Hero.svg');
+  min-height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  top: -100px;
+  // z-index: -1;
+  // width: 90%;
 }
 
-.heroContainer {
+.infoContainer {
   display: flex;
   width: 100%;
-  justify-content: space-between;
-  align-items: flex-end;
-  .heading {
-    font-size: 10rem;
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    line-height: 100%;
+  justify-content: center;
+  align-items: center;
+  .svgContainer {
+    .svg {
+      width: 500px;
+    }
   }
+
+  .textContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    h1 {
+      font-size: 4rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      line-height: 130%;
+    }
+    p {
+      font-family: 'Poppins';
+      font-size: 1.5rem;
+      font-weight: 400;
+      line-height: 27px;
+      width: 75%;
+      margin-top: 1rem;
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .infoContainer {
+    .svgContainer {
+      .svg {
+        width: 400px;
+      }
+    }
+    .textContainer {
+      h1 {
+        font-size: 3rem;
+      }
+      p {
+        font-size: 0.9rem;
+        width: 80%;
+      }
+    }
+  }
+}
+@media screen and (max-width: 1024px) {
+  .infoContainer {
+    flex-direction: column;
+    .svgContainer {
+      .svg {
+        width: 80vw;
+      }
+    }
+
+    .textContainer {
+      align-items: center;
+      text-align: center;
+      h1 {
+        font-size: 3.5rem;
+        text-align: center;
+        width: 90%;
+      }
+      p {
+        width: 90%;
+      }
+    }
+  }
+}
+@media screen and (max-width: 768px) {
+  .infoContainer {
+    .textContainer {
+      h1 {
+        font-size: 3rem;
+      }
+    }
+  }
+}
+// @media screen and (max-width: 600px) {
+//   .infoContainer {
+//     .svgContainer {
+//       .svg {
+//       }
+//     }
+
+//     .textContainer {
+//       h1 {
+//       }
+//       p {
+//       }
+//     }
+//   }
+// }
+// @media screen and (max-width: 480px) {
+//   .infoContainer {
+//     .svgContainer {
+//       .svg {
+//       }
+//     }
+
+//     .textContainer {
+//       h1 {
+//       }
+//       p {
+//       }
+//     }
+//   }
+// }
+// @media screen and (max-width: 320px) {
+//   .infoContainer {
+//     .svgContainer {
+//       .svg {
+//       }
+//     }
+
+//     .textContainer {
+//       h1 {
+//       }
+//       p {
+//       }
+//     }
+//   }
+// }
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.heroContainer {
+  width: 100vw;
+  background-color: rgba(255, 255, 255, 0.25);
+  min-height: 100vh;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 22;
 }
 
 .textContainer {
@@ -32,21 +174,6 @@
   }
 }
 
-.svg {
-  position: absolute;
-  left: 200px;
-  top: 200px;
-  // left: 25%;
-  width: 180px;
-  height: auto;
-  // animation
-  animation: animateDash 8s linear forwards infinite;
-  // stroke
-  stroke-dasharray: 2000;
-  stroke-dashoffset: 2000;
-  // pointer-events
-  pointer-events: none;
-}
 @media screen and (max-width: 1200px) {
   .heroContainer {
     .heading {
@@ -79,18 +206,12 @@
   .heroSvg {
     max-width: 70%;
   }
-  .svg {
-    top: 140px;
-    left: 150px;
-    width: 150px;
-  }
 }
 @media screen and (max-width: 768px) {
   .heroContainer {
     flex-direction: column-reverse;
     justify-content: center;
     align-items: flex-start;
-    margin-left: 0.5rem;
     .heading {
       font-size: 7rem;
       margin-top: 1rem;
@@ -98,18 +219,11 @@
   }
   .textContainer {
     align-items: flex-start;
-    margin-left: 0.5rem;
+    // margin-left: 0.5rem;
     margin-top: 0.2rem;
     .heading {
       font-size: 7rem;
     }
-  }
-  .heroSvg {
-    max-width: 90%;
-  }
-  .svg {
-    top: 380px;
-    left: 350px;
   }
 }
 @media screen and (max-width: 600px) {
@@ -120,7 +234,7 @@
     flex-direction: column-reverse;
     justify-content: center;
     align-items: flex-start;
-    margin-left: 1rem;
+    // margin-left: 1rem;
     .heading {
       font-size: 6rem;
       margin-top: 1rem;
@@ -128,19 +242,11 @@
   }
   .textContainer {
     align-items: flex-start;
-    margin-left: 1rem;
+    // margin-left: 1rem;
     margin-top: 0.2rem;
     .heading {
       font-size: 5.5rem;
     }
-  }
-  .heroSvg {
-    max-width: 90%;
-  }
-  .svg {
-    left: 200px;
-    top: 370px;
-    width: 130px;
   }
 }
 @media screen and (max-width: 480px) {
@@ -152,17 +258,11 @@
   }
   .textContainer {
     align-items: flex-start;
-    margin-left: 1rem;
+    // margin-left: 1rem;
     margin-top: 0.2rem;
     .heading {
       font-size: 4rem;
     }
-  }
-  .heroSvg {
-    max-width: 90%;
-  }
-  .svg {
-    width: 120px;
   }
 }
 @media screen and (max-width: 320px) {
@@ -175,11 +275,6 @@
     .heading {
       font-size: 3rem;
     }
-  }
-  .svg {
-    width: 100px;
-    top: 380px;
-    left: 150px;
   }
 }
 .heroSvg {
