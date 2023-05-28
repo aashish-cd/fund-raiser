@@ -6,8 +6,7 @@ import Link from 'next/link'
 
 const Footer = () => {
   return (
-    <div className={styles.footer + ' primary-text'}>
-      <hr className={styles.horizontalline + ' section-margin'} />
+    <div className={styles.footer + ' primary-text section-margin'}>
       <div className={styles.footerContainer}>
         <div className={styles.mainContainer}>
           <div>
@@ -15,8 +14,8 @@ const Footer = () => {
               src={'/logo.png'}
               className={styles.logo}
               alt="fund-raiser"
-              width={319}
-              height={108}
+              width={100 * 3}
+              height={22.7 * 3}
             />
           </div>
           <div className={styles.insideMainContainer}>

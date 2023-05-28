@@ -5,12 +5,13 @@ import MobileSlideInBar from './MobileSlideInBar/MobileSlideInBar'
 import { AiOutlineMenu } from 'react-icons/ai'
 import { FaTimes } from 'react-icons/fa'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 const NavBar = () => {
   const [showSidebar, setShowSidebar] = useState(false)
   const reset = () => setShowSidebar(() => false)
   const set = () => setShowSidebar(() => true)
-  console.log(showSidebar)
+  const router = useRouter()
   useEffect(() => {
     if (typeof window !== 'undefined') {
       window.addEventListener('resize', reset)
@@ -31,6 +32,7 @@ const NavBar = () => {
                 alt="fund-raiser"
                 width={100 * 2}
                 height={22.7 * 2}
+                onClick={() => router.push('/')}
               />
             </div>
             <div className={styles.ItemsSection}>
@@ -74,18 +76,10 @@ export const navLinks = [
     name: 'Home',
     link: '/',
   },
-  {
-    name: 'Charity',
-    link: '/charity',
-  },
-  {
-    name: 'Disaster',
-    link: '/disaster',
-  },
-  {
-    name: 'Event',
-    link: '/event',
-  },
+  // {
+  //   name: 'Charity',
+  //   link: '/charity',
+  // },
   {
     name: 'Donation',
     link: '/donation',

@@ -5,16 +5,8 @@ $background-gradient-color: -webkit-linear-gradient(
 );
 
 .footer {
-  margin: 0px;
-  margin-left: 0px;
   width: 90%;
-  .horizontalline {
-    // width: 100vw;
-    background-color: rgba(255, 255, 255, 0.12);
-    height: 1.5px;
-    border: none;
-    margin-bottom: 1rem;
-  }
+
   .footerContainer {
     display: grid;
     grid-template-columns: 1fr auto;
@@ -30,7 +22,6 @@ $background-gradient-color: -webkit-linear-gradient(
         align-items: left;
         justify-content: space-around;
         gap: 7rem;
-        margin-top: 2rem;
         .firstContainer {
           display: flex;
           flex-direction: row;
@@ -51,9 +42,7 @@ $background-gradient-color: -webkit-linear-gradient(
             line-height: 130%;
             color: white;
           }
-          .marginLeft {
-            margin-left: 5rem;
-          }
+
           .imageWrapper {
             display: flex;
             flex-direction: row;

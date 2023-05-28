@@ -12,14 +12,14 @@ import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage'
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyBAZRyyejl_TtR3UL11NvS2IHws6u3oORo',
-  authDomain: 'reactproject-b7e86.firebaseapp.com',
-  databaseURL: 'https://reactproject-b7e86-default-rtdb.firebaseio.com',
-  projectId: 'reactproject-b7e86',
-  storageBucket: 'reactproject-b7e86.appspot.com',
-  messagingSenderId: '691972724879',
-  appId: '1:691972724879:web:52810d92b5eab5571678fa',
-  measurementId: 'G-QK208LHFK0',
+  apiKey: 'AIzaSyBaWfeiC5HVWVhx-oknWQYU8lBvoWK597g',
+  authDomain: 'trac-trace.firebaseapp.com',
+  databaseURL: 'https://trac-trace.firebaseio.com',
+  projectId: 'trac-trace',
+  storageBucket: 'trac-trace.appspot.com',
+  messagingSenderId: '667599813077',
+  appId: '1:667599813077:web:739fe07143940152c0e55c',
+  measurementId: 'G-F9YWBL3Z52',
 }
 
 // Initialize Firebase

@@ -1,7 +1,7 @@
 import DonationCard from '@/components/DonationCard/DonationCard'
 import React from 'react'
 
-const charity = () => {
+const Donation = () => {
   return (
     <div>
       <DonationCard />
@@ -9,4 +9,4 @@ const charity = () => {
   )
 }
 
-export default charity
+export default Donation
