@@ -101,11 +101,7 @@ $background-gradient-color: -webkit-linear-gradient(
 }
 
 // breakpoints - 1200, 1024, 768, 600, 480, 320
-@media screen and (max-width: 1800px) {
-  .logo {
-    scale: 90%;
-  }
-}
+
 @media screen and (max-width: 1650px) {
   .totalFooter {
     padding: 0.8rem 5vw;
@@ -132,9 +128,7 @@ $background-gradient-color: -webkit-linear-gradient(
       }
     }
   }
-  .logo {
-    scale: 85%;
-  }
+
   .totalFooter {
     padding: 0.8rem 4vw;
   }
@@ -161,10 +155,7 @@ $background-gradient-color: -webkit-linear-gradient(
       }
     }
   }
-  .logo {
-    height: 70px;
-    width: 205px;
-  }
+
   .totalFooter {
     padding: 0.8rem 4vw;
     font-size: 0.8rem;
@@ -266,9 +257,5 @@ $background-gradient-color: -webkit-linear-gradient(
         }
       }
     }
-  }
-  .logo {
-    height: 60px;
-    width: 180px;
   }
 }
