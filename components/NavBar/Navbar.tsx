@@ -27,8 +27,8 @@ const NavBar = () => {
             <div className={styles.logoSection}>
               <Image
                 src={'/logo.png'}
-                className={styles.mantraPic}
-                alt="mantrapic"
+                className={styles.logo}
+                alt="fund-raiser"
                 width={100 * 2}
                 height={22.7 * 2}
               />

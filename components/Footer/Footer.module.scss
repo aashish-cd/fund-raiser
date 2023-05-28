@@ -113,7 +113,7 @@ $background-gradient-color: -webkit-linear-gradient(
 
 // breakpoints - 1200, 1024, 768, 600, 480, 320
 @media screen and (max-width: 1800px) {
-  .mantraPic {
+  .logo {
     scale: 90%;
   }
 }
@@ -143,7 +143,7 @@ $background-gradient-color: -webkit-linear-gradient(
       }
     }
   }
-  .mantraPic {
+  .logo {
     scale: 85%;
   }
   .totalFooter {
@@ -172,7 +172,7 @@ $background-gradient-color: -webkit-linear-gradient(
       }
     }
   }
-  .mantraPic {
+  .logo {
     height: 70px;
     width: 205px;
   }
@@ -278,7 +278,7 @@ $background-gradient-color: -webkit-linear-gradient(
       }
     }
   }
-  .mantraPic {
+  .logo {
     height: 60px;
     width: 180px;
   }

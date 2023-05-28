@@ -13,8 +13,8 @@ const Footer = () => {
           <div>
             <Image
               src={'/logo.png'}
-              className={styles.mantraPic}
-              alt="mantrapic"
+              className={styles.logo}
+              alt="fund-raiser"
               width={319}
               height={108}
             />
@@ -35,7 +35,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <p
+      <div
         className="primary-text"
         style={{
           textAlign: 'center',
@@ -65,7 +65,7 @@ const Footer = () => {
           <p>Manoj Kumar Chauhan</p>
           <p>Willson Ghimire</p>
         </div>
-      </p>
+      </div>
     </div>
   )
 }

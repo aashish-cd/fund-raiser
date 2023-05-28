@@ -8,7 +8,7 @@ const Contact = () => {
         <h1>
           <span className="outline-gradient-text">Let&apos;s</span> Connect
         </h1>
-        <p>Build your business together with MANTRA LABS</p>
+        {/* <p></p> */}
       </div>
       <div className={styles.formWrapper}>
         <div className={styles.eachPart}>
