@@ -4,13 +4,19 @@ import { getAllProducts } from '../firebase'
 
 const MyProvider = ({ children }: any) => {
   const [data, setData] = useState([])
-  const [filteredProducts, setFilteredProducts] = useState([])
+  const [isLoggedin, setIsLoggedin] = useState(true)
+
+  const handleSignin = (logStatus: boolean) => {
+    console.log('handle sign in ')
+    setIsLoggedin(!logStatus)
+  }
 
   const value = {
-    filteredProducts,
     data,
     setData,
-    setFilteredProducts,
+    isLoggedin,
+    setIsLoggedin,
+    handleSignin,
   }
 
   return <MyContext.Provider value={value}>{children}</MyContext.Provider>

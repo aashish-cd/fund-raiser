@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import styles from './NavBar.module.scss'
 import Image from 'next/image'
 import MobileSlideInBar from './MobileSlideInBar/MobileSlideInBar'
@@ -6,8 +6,10 @@ import { AiOutlineMenu } from 'react-icons/ai'
 import { FaTimes } from 'react-icons/fa'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import MyContext from '@/context/MyContext'
 
 const NavBar = () => {
+  const { isLoggedin, handleSignin } = useContext(MyContext)
   const [showSidebar, setShowSidebar] = useState(false)
   const reset = () => setShowSidebar(() => false)
   const set = () => setShowSidebar(() => true)
@@ -20,6 +22,7 @@ const NavBar = () => {
       window.removeEventListener('resize', reset)
     }
   }, [])
+
   return (
     <>
       <nav className={styles.NavWrapper}>
@@ -36,7 +39,7 @@ const NavBar = () => {
               />
             </div>
             <div className={styles.ItemsSection}>
-              {navLinks.map((nav, index) => (
+              {(isLoggedin ? loginLinks : navLinks).map((nav, index) => (
                 <Link
                   href={nav.link}
                   key={index}
@@ -46,7 +49,12 @@ const NavBar = () => {
                 </Link>
               ))}
 
-              <button className={'primary-button text-white'}>Sign In</button>
+              <button
+                className={'primary-button text-white'}
+                onClick={() => handleSignin(isLoggedin)}
+              >
+                {isLoggedin ? 'Sign Out ' : 'Sign In'}
+              </button>
             </div>
             <div className={styles.onmobileonly}>
               <div
@@ -81,8 +89,26 @@ export const navLinks = [
   //   link: '/charity',
   // },
   {
-    name: 'Donation',
-    link: '/donation',
+    name: 'Campaigns',
+    link: '/campaigns',
+  },
+]
+export const loginLinks = [
+  {
+    name: 'Home',
+    link: '/',
+  },
+  {
+    name: 'Campaigns',
+    link: '/campaigns',
+  },
+  {
+    name: 'My Campaigns',
+    link: '/dashboard/my-campaigns',
+  },
+  {
+    name: 'Start Campaign',
+    link: '/dashboard/start-campaign',
   },
 ]
 export default NavBar

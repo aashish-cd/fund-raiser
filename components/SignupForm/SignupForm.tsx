@@ -1,7 +1,10 @@
+import MyContext from '@/context/MyContext'
 import { useRouter } from 'next/router'
+import { useContext } from 'react'
 
 const SignupForm = () => {
   const router = useRouter()
+  const { handleSignin } = useContext(MyContext)
   return (
     <section className="text-gray-600 body-font">
       <div className="container px-5 py-24 mx-auto flex flex-wrap items-center">
@@ -44,7 +47,10 @@ const SignupForm = () => {
             />
           </div>
           <button
-            onClick={() => router.push('/dashboard')}
+            onClick={() => {
+              handleSignin(false)
+              router.push('/dashboard')
+            }}
             className="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"
           >
             Button

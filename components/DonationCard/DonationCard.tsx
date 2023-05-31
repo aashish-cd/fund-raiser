@@ -3,14 +3,14 @@ import styles from './DonationCard.module.scss'
 import Image from 'next/image'
 import donationImage from '../Assets/Donation.svg'
 
-const DonationCard = () => {
+const DonationCard = ({ data }: { data: Array<any> }) => {
   return (
     <div className={styles.container}>
-      <h1 className="primary-text ">
-        Open <span className="outline-gradient-text"> Donations</span>
+      <h1 className="primary-text text-3xl mb-5">
+        Open <span className="outline-gradient-text"> Campaigns</span>
       </h1>
       <div className={styles.container}>
-        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item, index) => (
+        {data?.map((item, index) => (
           <div className={styles.card} key={index}>
             <Image
               src={donationImage}

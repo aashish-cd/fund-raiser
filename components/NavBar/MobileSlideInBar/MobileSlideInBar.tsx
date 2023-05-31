@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styles from './MobileSlideInBar.module.scss'
 
 import Link from 'next/link'
-import { navLinks } from '../Navbar'
+import { loginLinks, navLinks } from '../Navbar'
+import MyContext from '@/context/MyContext'
 
 const MobileSlideInBar = ({ showSidebar }: { showSidebar: boolean }) => {
+  const { isLoggedin, handleSignin } = useContext(MyContext)
   return (
     <div
       className={`${styles.SidebarContainer}  ${
@@ -12,13 +14,18 @@ const MobileSlideInBar = ({ showSidebar }: { showSidebar: boolean }) => {
       }`}
     >
       <div className={` ${styles.navLinks}`}>
-        {navLinks.map((nav, index) => (
+        {(isLoggedin ? loginLinks : navLinks).map((nav, index) => (
           <Link href={nav.link} key={index} style={{ textDecoration: 'none' }}>
             <p className="primary-text">{nav.name}</p>
           </Link>
         ))}
 
-        <button className={'primary-button'}>Sign In</button>
+        <button
+          className={'primary-button text-white'}
+          onClick={() => handleSignin(isLoggedin)}
+        >
+          {isLoggedin ? 'Sign Out ' : 'Sign In'}
+        </button>
       </div>
     </div>
   )

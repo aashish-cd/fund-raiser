@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styles from './Footer.module.scss'
 import Image from 'next/image'
-import { navLinks } from '../NavBar/Navbar'
+import { loginLinks, navLinks } from '../NavBar/Navbar'
 import Link from 'next/link'
+import MyContext from '@/context/MyContext'
 
 const Footer = () => {
+  const { isLoggedin } = useContext(MyContext)
   return (
     <div className={styles.footer + ' primary-text section-margin'}>
       <div className={styles.footerContainer}>
@@ -20,7 +22,7 @@ const Footer = () => {
           </div>
           <div className={styles.insideMainContainer}>
             <div className={styles.firstContainer}>
-              {navLinks.map((nav, index) => (
+              {(isLoggedin ? loginLinks : navLinks).map((nav, index) => (
                 <Link
                   href={nav.link}
                   key={index}
