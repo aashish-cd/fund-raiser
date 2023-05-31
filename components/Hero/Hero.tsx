@@ -20,8 +20,10 @@ const Hero = () => {
               true.
             </p>
             <div className={styles.buttonContainer}>
-              <button className="primary-button">Donate now</button>
-              <button className="secondary-button">Watch Video</button>
+              <button className="primary-button text-white">Donate now</button>
+              <button className="secondary-button text-white">
+                Watch Video
+              </button>
             </div>
           </div>
         </div>

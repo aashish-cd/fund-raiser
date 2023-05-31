@@ -26,7 +26,7 @@ const Footer = () => {
                   key={index}
                   style={{ textDecoration: 'none' }}
                 >
-                  <p className={'primary-text'}>{nav.name}</p>
+                  <p className={'primary-text '}>{nav.name}</p>
                 </Link>
               ))}
             </div>

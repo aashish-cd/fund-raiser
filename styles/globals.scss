@@ -1,3 +1,7 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
 $primary-background-color: #eee;
 $background-gradient-color: -webkit-linear-gradient(
   101.4deg,
@@ -11,75 +15,6 @@ $horizontal-line-color: rgba(0, 0, 0, 0.12);
 $primary-logo-color: #000c81;
 $secondary-logo-color: #000b7e;
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap');
-@font-face {
-  font-family: 'ClashDisplay-Variable';
-  src: url('fonts/ClashDisplay-Variable.woff2') format('woff2'),
-    url('fonts/ClashDisplay-Variable.woff') format('woff'),
-    url('fonts/ClashDisplay-Variable.ttf') format('truetype');
-  font-weight: 200 700;
-  font-display: swap;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'ClashDisplay-Extralight';
-  src: url('fonts/ClashDisplay-Extralight.woff2') format('woff2'),
-    url('fonts/ClashDisplay-Extralight.woff') format('woff'),
-    url('fonts/ClashDisplay-Extralight.ttf') format('truetype');
-  font-weight: 200;
-  font-display: swap;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'ClashDisplay-Light';
-  src: url('fonts/ClashDisplay-Light.woff2') format('woff2'),
-    url('fonts/ClashDisplay-Light.woff') format('woff'),
-    url('fonts/ClashDisplay-Light.ttf') format('truetype');
-  font-weight: 300;
-  font-display: swap;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'ClashDisplay-Regular';
-  src: url('fonts/ClashDisplay-Regular.woff2') format('woff2'),
-    url('fonts/ClashDisplay-Regular.woff') format('woff'),
-    url('fonts/ClashDisplay-Regular.ttf') format('truetype');
-  font-weight: 400;
-  font-display: swap;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'ClashDisplay-Medium';
-  src: url('fonts/ClashDisplay-Medium.woff2') format('woff2'),
-    url('fonts/ClashDisplay-Medium.woff') format('woff'),
-    url('fonts/ClashDisplay-Medium.ttf') format('truetype');
-  font-weight: 500;
-  font-display: swap;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'ClashDisplay-Semibold';
-  src: url('fonts/ClashDisplay-Semibold.woff2') format('woff2'),
-    url('fonts/ClashDisplay-Semibold.woff') format('woff'),
-    url('fonts/ClashDisplay-Semibold.ttf') format('truetype');
-  font-weight: 600;
-  font-display: swap;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'ClashDisplay-Bold';
-  src: url('fonts/ClashDisplay-Bold.woff2') format('woff2'),
-    url('fonts/ClashDisplay-Bold.woff') format('woff'),
-    url('fonts/ClashDisplay-Bold.ttf') format('truetype');
-  font-weight: 700;
-  font-display: swap;
-  font-style: normal;
-}
 
 * {
   box-sizing: border-box;
@@ -96,7 +31,7 @@ body {
 body {
   color: $primary-text-color;
   background: $primary-background-color;
-  font-family: 'ClashDisplay-Variable';
+  font-family: 'Poppins', sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -107,6 +42,8 @@ body {
 
 .primary-text {
   color: $primary-text-color;
+  // font-size: 1rem;
+  font-weight: 600;
 }
 .primary-text:hover {
   color: $primary-logo-color;
@@ -114,6 +51,8 @@ body {
 }
 .secondary-text {
   color: $secondary-text-color;
+  // font-size: 1rem;
+  font-weight: 600;
 }
 .logo-text {
   color: $primary-logo-color;

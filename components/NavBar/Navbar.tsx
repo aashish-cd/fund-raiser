@@ -46,7 +46,7 @@ const NavBar = () => {
                 </Link>
               ))}
 
-              <button className={' primary-button'}>Sign In</button>
+              <button className={'primary-button text-white'}>Sign In</button>
             </div>
             <div className={styles.onmobileonly}>
               <div

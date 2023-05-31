@@ -6,7 +6,7 @@ import donationImage from '../Assets/Donation.svg'
 const DonationCard = () => {
   return (
     <div className={styles.container}>
-      <h1 className="primary-text">
+      <h1 className="primary-text ">
         Open <span className="outline-gradient-text"> Donations</span>
       </h1>
       <div className={styles.container}>
@@ -31,7 +31,9 @@ const DonationCard = () => {
                 adipisicing elit. Ex, hic.
               </p>
               <div className={styles.row} style={{ marginTop: '1rem' }}>
-                <button className={'primary-button'}>Donate now</button>
+                <button className={'primary-button text-white'}>
+                  Donate now
+                </button>
               </div>
             </div>
           </div>

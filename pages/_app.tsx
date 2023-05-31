@@ -23,7 +23,6 @@ export default function App({ Component, pageProps }: AppProps) {
       <main className={`${styles.main}`}>
         <NavBar />
         <Component {...pageProps} />
-
         <Footer />
       </main>
     </MyProvider>

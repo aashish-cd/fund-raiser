@@ -5,12 +5,6 @@ import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage'
 
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-
 const firebaseConfig = {
   apiKey: 'AIzaSyBaWfeiC5HVWVhx-oknWQYU8lBvoWK597g',
   authDomain: 'trac-trace.firebaseapp.com',
@@ -42,7 +36,7 @@ const uploadImage = async (file: any) => {
   console.log(file.name)
   const storageRef = ref(
     storage,
-    `product-images/${fileName}.${file.name.split('.'[1])}`
+    `images/${fileName}.${file.name.split('.'[1])}`
   )
   try {
     const res = await uploadBytes(storageRef, file)
