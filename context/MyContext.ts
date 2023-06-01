@@ -6,6 +6,7 @@ interface AppContextInterface {
   isLoggedin: boolean
   setIsLoggedin: any
   handleSignin: any
+  user: any
 }
 const MyContext = createContext<AppContextInterface>({
   data: null,
@@ -13,6 +14,7 @@ const MyContext = createContext<AppContextInterface>({
   isLoggedin: false,
   setIsLoggedin: null,
   handleSignin: null,
+  user: null,
 })
 
 export default MyContext

@@ -1,9 +1,9 @@
 import MyContext from '@/context/MyContext'
-import { signUpWithEmailPassword } from '@/firebase'
 import { useRouter } from 'next/router'
 import { useContext, useState } from 'react'
+import { signInWithEmailPassword } from '@/firebase'
 
-const SignupForm = () => {
+const LoginForm = () => {
   const router = useRouter()
   const { handleSignin } = useContext(MyContext)
   const [loginData, setLoginData] = useState({
@@ -18,15 +18,15 @@ const SignupForm = () => {
       <div className="container px-5 py-24 mx-auto flex flex-wrap items-center">
         <div className="lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0">
           <h1 className="title-font font-medium text-3xl text-gray-900">
-            Join the Movement:
+            Connect and Contribute:
           </h1>
           <p className="leading-relaxed mt-4">
-            Create an Account and Empower Great Ideas
+            Sign in to Your Crowdfunding Journey
           </p>
         </div>
         <div className="lg:w-2/6 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0">
           <h2 className="text-gray-900 text-lg font-medium title-font mb-5">
-            Sign Up
+            Sign In
           </h2>
           <div className="relative mb-4">
             <label htmlFor="email" className="leading-7 text-sm text-gray-600">
@@ -61,16 +61,16 @@ const SignupForm = () => {
           </div>
           <button
             onClick={() => {
-              signUpWithEmailPassword(loginData)
+              signInWithEmailPassword(loginData)
               router.push('/dashboard')
             }}
             className="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"
           >
-            Sign Up
+            Sign In
           </button>
         </div>
       </div>
     </section>
   )
 }
-export default SignupForm
+export default LoginForm

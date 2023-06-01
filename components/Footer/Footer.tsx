@@ -6,7 +6,7 @@ import Link from 'next/link'
 import MyContext from '@/context/MyContext'
 
 const Footer = () => {
-  const { isLoggedin } = useContext(MyContext)
+  const { user } = useContext(MyContext)
   return (
     <div className={styles.footer + ' primary-text section-margin'}>
       <div className={styles.footerContainer}>
@@ -22,7 +22,7 @@ const Footer = () => {
           </div>
           <div className={styles.insideMainContainer}>
             <div className={styles.firstContainer}>
-              {(isLoggedin ? loginLinks : navLinks).map((nav, index) => (
+              {(user ? loginLinks : navLinks).map((nav, index) => (
                 <Link
                   href={nav.link}
                   key={index}

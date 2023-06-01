@@ -7,11 +7,11 @@ import MyContext from '@/context/MyContext'
 const Dashboard = () => {
   const router = useRouter()
 
-  const { isLoggedin } = useContext(MyContext)
+  const { user } = useContext(MyContext)
 
   useEffect(() => {
-    !isLoggedin && router.push('/SignUp')
-  }, [isLoggedin])
+    !user && router.push('/login')
+  }, [user])
   return (
     <section className="text-gray-600 body-font w-full">
       <div className="flex flex-wrap justify-center  m-10">
@@ -26,21 +26,21 @@ const Dashboard = () => {
             <p className="leading-relaxed mb-3">
               Click here to start a new <br /> campaign
             </p>
-            <a className="text-indigo-500 inline-flex items-center">
+            <p className="text-indigo-500 inline-flex items-center">
               Learn More
               <svg
                 className="w-4 h-4 ml-2"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
-                stroke-width="2"
+                strokeWidth="2"
                 fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               >
                 <path d="M5 12h14"></path>
                 <path d="M12 5l7 7-7 7"></path>
               </svg>
-            </a>
+            </p>
           </div>
         </Link>
         <Link
@@ -54,21 +54,21 @@ const Dashboard = () => {
             <p className="leading-relaxed mb-3">
               Click here to see your <br /> campaigns
             </p>
-            <a className="text-indigo-500 inline-flex items-center">
+            <p className="text-indigo-500 inline-flex items-center">
               Learn More
               <svg
                 className="w-4 h-4 ml-2"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
-                stroke-width="2"
+                strokeWidth="2"
                 fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               >
                 <path d="M5 12h14"></path>
                 <path d="M12 5l7 7-7 7"></path>
               </svg>
-            </a>
+            </p>
           </div>
         </Link>
       </div>

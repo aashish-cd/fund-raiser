@@ -6,7 +6,7 @@ import { loginLinks, navLinks } from '../Navbar'
 import MyContext from '@/context/MyContext'
 
 const MobileSlideInBar = ({ showSidebar }: { showSidebar: boolean }) => {
-  const { isLoggedin, handleSignin } = useContext(MyContext)
+  const { user, handleSignin } = useContext(MyContext)
   return (
     <div
       className={`${styles.SidebarContainer}  ${
@@ -14,7 +14,7 @@ const MobileSlideInBar = ({ showSidebar }: { showSidebar: boolean }) => {
       }`}
     >
       <div className={` ${styles.navLinks}`}>
-        {(isLoggedin ? loginLinks : navLinks).map((nav, index) => (
+        {(user ? loginLinks : navLinks).map((nav, index) => (
           <Link href={nav.link} key={index} style={{ textDecoration: 'none' }}>
             <p className="primary-text">{nav.name}</p>
           </Link>
@@ -22,9 +22,9 @@ const MobileSlideInBar = ({ showSidebar }: { showSidebar: boolean }) => {
 
         <button
           className={'primary-button text-white'}
-          onClick={() => handleSignin(isLoggedin)}
+          onClick={() => handleSignin()}
         >
-          {isLoggedin ? 'Sign Out ' : 'Sign In'}
+          {user ? 'Sign Out ' : 'Sign In'}
         </button>
       </div>
     </div>

@@ -6,14 +6,14 @@ import DonationCard from '@/components/DonationCard/DonationCard'
 const MyCampaigns = () => {
   const router = useRouter()
 
-  const { isLoggedin } = useContext(MyContext)
+  const { user } = useContext(MyContext)
 
   useEffect(() => {
-    !isLoggedin && router.push('/SignUp')
-  }, [isLoggedin])
+    !user && router.push('/login')
+  }, [user])
   return (
     <div>
-      <DonationCard data={[1, 2, 3]} />
+      <DonationCard data={[1, 2, 3]} text="My" />
     </div>
   )
 }

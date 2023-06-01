@@ -1,4 +1,11 @@
-import { db, signInAsAdmin, auth, uploadImage } from './config'
+import {
+  db,
+  auth,
+  uploadImage,
+  signInWithEmailPassword,
+  signUpWithEmailPassword,
+  signInWithGoogle,
+} from './config'
 import {
   collection,
   addDoc,
@@ -36,7 +43,9 @@ export {
   storeDonation,
   deleteDonation,
   editDonation,
-  signInAsAdmin,
   auth,
   uploadImage,
+  signInWithGoogle,
+  signInWithEmailPassword,
+  signUpWithEmailPassword,
 }

@@ -6,6 +6,7 @@ import MyProvider from '@/context/ContextProvider'
 import NavBar from '@/components/NavBar/Navbar'
 import Footer from '@/components/Footer/Footer'
 import styles from '../styles/Home.module.scss'
+import 'react-toastify/dist/ReactToastify.css'
 
 export default function App({ Component, pageProps }: AppProps) {
   return (

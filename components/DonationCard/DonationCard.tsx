@@ -3,11 +3,17 @@ import styles from './DonationCard.module.scss'
 import Image from 'next/image'
 import donationImage from '../Assets/Donation.svg'
 
-const DonationCard = ({ data }: { data: Array<any> }) => {
+const DonationCard = ({
+  data,
+  text = 'Open',
+}: {
+  data: Array<any>
+  text?: string
+}) => {
   return (
     <div className={styles.container}>
       <h1 className="primary-text text-3xl mb-5">
-        Open <span className="outline-gradient-text"> Campaigns</span>
+        {text} <span className="outline-gradient-text"> Campaigns</span>
       </h1>
       <div className={styles.container}>
         {data?.map((item, index) => (

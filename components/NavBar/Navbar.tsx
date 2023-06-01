@@ -9,7 +9,7 @@ import { useRouter } from 'next/router'
 import MyContext from '@/context/MyContext'
 
 const NavBar = () => {
-  const { isLoggedin, handleSignin } = useContext(MyContext)
+  const { user, handleSignin } = useContext(MyContext)
   const [showSidebar, setShowSidebar] = useState(false)
   const reset = () => setShowSidebar(() => false)
   const set = () => setShowSidebar(() => true)
@@ -39,7 +39,7 @@ const NavBar = () => {
               />
             </div>
             <div className={styles.ItemsSection}>
-              {(isLoggedin ? loginLinks : navLinks).map((nav, index) => (
+              {(user ? loginLinks : navLinks).map((nav, index) => (
                 <Link
                   href={nav.link}
                   key={index}
@@ -51,9 +51,9 @@ const NavBar = () => {
 
               <button
                 className={'primary-button text-white'}
-                onClick={() => handleSignin(isLoggedin)}
+                onClick={() => handleSignin()}
               >
-                {isLoggedin ? 'Sign Out ' : 'Sign In'}
+                {user ? 'Sign Out ' : 'Sign In'}
               </button>
             </div>
             <div className={styles.onmobileonly}>

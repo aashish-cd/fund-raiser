@@ -6,11 +6,11 @@ import MyContext from '@/context/MyContext'
 const StartCampaign = () => {
   const router = useRouter()
 
-  const { isLoggedin } = useContext(MyContext)
+  const { user } = useContext(MyContext)
 
   useEffect(() => {
-    !isLoggedin && router.push('/SignUp')
-  }, [isLoggedin])
+    !user && router.push('/login')
+  }, [user])
   return <DonationAddForm />
 }
 
