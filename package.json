@@ -39,5 +39,11 @@
     "postcss": "^8.4.24",
     "prettier": "^2.8.3",
     "tailwindcss": "^3.3.2"
-  }
+  },
+  "description": "This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).",
+  "main": "next.config.js",
+  "keywords": [],
+  "author": "mkchauhan647 <mkchauhan647@gmail.com>",
+  "license": "ISC",
+  "repository": "https://github.com/aashish-cd/fund-raiser"
 }
