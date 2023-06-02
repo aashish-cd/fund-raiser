@@ -11,6 +11,7 @@ const StartCampaign = () => {
   useEffect(() => {
     !user && router.push('/login')
   }, [user])
+
   return <DonationAddForm />
 }
 

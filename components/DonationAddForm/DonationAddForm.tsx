@@ -1,23 +1,22 @@
+import { Campaign } from '@/types'
 import React, { useState } from 'react'
 
-interface donationAddFormProps {
-  name: string
-  target: number
-  description: string
-  postedBy: string
-  date: string
-}
-
 const DonationAddForm = () => {
-  const [data, setData] = useState<donationAddFormProps>({
-    name: '',
-    target: 0,
+  const [data, setData] = useState<Campaign>({
+    id: '',
+    title: '',
     description: '',
-    postedBy: '',
-    date: Date(),
+    goalAmount: 0,
+    currentAmount: 0,
+    image: '',
+    category: '',
+    isVerified: false,
+    endDate: '',
   })
   const onValueChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
   ) => {
     setData({
       ...data,
@@ -30,8 +29,8 @@ const DonationAddForm = () => {
   }
   return (
     <section className="text-gray-600 body-font relative">
-      <div className="container px-5 py-24 mx-auto">
-        <div className="flex flex-col text-center w-full mb-12">
+      <div className="container px-5 py-2 mx-auto">
+        <div className="flex flex-col text-center w-full mb-4">
           <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
             Start Campaign
           </h1>
@@ -44,18 +43,18 @@ const DonationAddForm = () => {
             <div className="p-2 w-full">
               <div className="relative">
                 <label
-                  htmlFor="name"
+                  htmlFor="title"
                   className="leading-7 text-sm text-gray-600"
                 >
-                  Name
+                  Title
                 </label>
                 <input
                   type="text"
-                  id="name"
-                  name="name"
-                  placeholder="Campaign Name"
+                  id="title"
+                  name="title"
+                  placeholder="Campaign Title"
                   onChange={onValueChange}
-                  value={data.name}
+                  value={data.title}
                   className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                 />
               </div>
@@ -63,20 +62,19 @@ const DonationAddForm = () => {
             <div className="p-2 w-full">
               <div className="relative">
                 <label
-                  htmlFor="target"
+                  htmlFor="goalAmount"
                   className="leading-7 text-sm text-gray-600"
                 >
-                  Target
+                  Goal Amount
                 </label>
                 <input
                   type="number"
-                  id="target"
-                  name="target"
+                  id="goalAmount"
+                  name="goalAmount"
                   onChange={onValueChange}
-                  value={data.target}
-                  step={500}
-                  min={500}
-                  placeholder="Campaign Target in Rupees"
+                  value={data.goalAmount}
+                  step={100}
+                  placeholder="Campaign's Goal in Rupees"
                   className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                 />
               </div>
@@ -100,6 +98,61 @@ const DonationAddForm = () => {
                 ></textarea>
               </div>
             </div>
+            {/* end date */}
+            <div className="p-2 w-full">
+              <div className="relative">
+                <label
+                  htmlFor="endDate"
+                  className="leading-7 text-sm text-gray-600"
+                >
+                  End Date
+                </label>
+                <input
+                  type="date"
+                  id="endDate"
+                  name="endDate"
+                  onChange={onValueChange}
+                  value={data.endDate}
+                  placeholder="Select End Date"
+                  className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:bg-opacity-0 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                />
+              </div>
+            </div>
+            <div className="p-2 w-full">
+              <div className="relative">
+                <label
+                  htmlFor="category"
+                  className="leading-7 text-sm text-gray-600"
+                >
+                  Select Category
+                </label>
+                <select
+                  id="category"
+                  name="category"
+                  // onSelect={(e) => console.log(e.target)}
+                  onChange={onValueChange}
+                  value={data.category}
+                  className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white  focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                >
+                  <option selected>Choose category</option>
+
+                  <option value="disaster">Disaster</option>
+                  <option value="personal stories of affected peoples">
+                    Personal stories of affected peoples
+                  </option>
+                  <option value="health campaign">Health campaign</option>
+                  <option value="environment">Environment</option>
+                  <option value="hunger">Hunger</option>
+                  <option value="animals">Animals</option>
+
+                  <option value="refugee campaign">Refugee campaign</option>
+                  <option value="homelessness">Homelessness</option>
+                  <option value="childcare">Childcare</option>
+                  <option value="education">Education</option>
+                </select>
+              </div>
+            </div>
+
             <div className="p-2 w-full">
               <button
                 type="submit"

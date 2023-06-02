@@ -1,7 +1,12 @@
+import ApproveDonationCard from '@/components/Admin/ApproveDonationCard'
 import React from 'react'
 
 const Admin = () => {
-  return <div>Admin</div>
+  return (
+    <div>
+      <ApproveDonationCard />
+    </div>
+  )
 }
 
 export default Admin
