@@ -4,6 +4,7 @@ import Image from 'next/image'
 import donationImage from '../Assets/Donation.svg'
 import { Campaign } from '@/types'
 import { toast } from 'react-toastify'
+import { Line } from 'rc-progress'
 
 const DonationCard = ({
   data,
@@ -39,6 +40,17 @@ const DonationCard = ({
                 <div>
                   <p className="text-red-700">{item.endDate}</p>
                 </div>
+                <Line
+                  percent={(item.currentAmount / item.goalAmount) * 100}
+                  trailWidth={2}
+                  strokeWidth={4}
+                  strokeColor="green"
+                  trailColor="gray"
+                />
+                <p>
+                  {((item.currentAmount / item.goalAmount) * 100).toFixed(1)}%
+                  (Rs. {item.currentAmount}) Raised out of {item.goalAmount}
+                </p>
                 <p className={styles.title}>{item.title}</p>
                 <p className={styles.description}>{item?.description}</p>
                 <div className={styles.row} style={{ marginTop: '1rem' }}>
