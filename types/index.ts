@@ -1,7 +1,6 @@
 // defining types in ts
 
 export type User = {
-  id: string
   demographics: {
     age: number
     gender: string
@@ -12,7 +11,7 @@ export type User = {
 }
 
 export type Campaign = {
-  id: string
+  id?: string
   title: string
   description: string
   category: string
@@ -21,6 +20,8 @@ export type Campaign = {
   endDate: string
   isVerified: boolean
   image: string
+  userEmail: string
+  createdAt?: string
 }
 
 export type Interaction = {

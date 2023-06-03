@@ -1,9 +1,11 @@
+import MyContext from '@/context/MyContext'
+import { getAllDonations, storeDonation, uploadImage } from '@/firebase'
 import { Campaign } from '@/types'
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 
 const DonationAddForm = () => {
+  const { user } = useContext(MyContext)
   const [data, setData] = useState<Campaign>({
-    id: '',
     title: '',
     description: '',
     goalAmount: 0,
@@ -12,6 +14,7 @@ const DonationAddForm = () => {
     category: '',
     isVerified: false,
     endDate: '',
+    userEmail: user.email,
   })
   const onValueChange = (
     e: React.ChangeEvent<
@@ -23,10 +26,39 @@ const DonationAddForm = () => {
       [e.target.name]: e.target.value,
     })
   }
-  const handleSubmit = (e: any) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault()
-    console.log(data)
+
+    try {
+      console.log('Adding Campaign')
+      await storeDonation(data)
+      setData({
+        title: '',
+        description: '',
+        goalAmount: 0,
+        currentAmount: 0,
+        image: '',
+        category: '',
+        isVerified: false,
+        endDate: '',
+        userEmail: user.email,
+      })
+
+      console.log('Campaign Added')
+    } catch (error) {
+      console.log(error)
+    }
   }
+
+  const handleFileInputChange = async (e: any) => {
+    const file = e.target.files[0]
+    const fileRef = await uploadImage(file)
+    setData({
+      ...data,
+      image: fileRef,
+    })
+  }
+
   return (
     <section className="text-gray-600 body-font relative">
       <div className="container px-5 py-2 mx-auto">
@@ -105,7 +137,7 @@ const DonationAddForm = () => {
                   htmlFor="endDate"
                   className="leading-7 text-sm text-gray-600"
                 >
-                  End Date
+                  End Date (In AD)
                 </label>
                 <input
                   type="date"
@@ -152,11 +184,36 @@ const DonationAddForm = () => {
                 </select>
               </div>
             </div>
+            <div className="p-2 w-full">
+              <div className="relative">
+                <label
+                  htmlFor="image"
+                  className="leading-7 text-sm text-gray-600"
+                >
+                  Select Image
+                </label>
+                <input
+                  id="image"
+                  name="image"
+                  type="file"
+                  onChange={(e) => handleFileInputChange(e)}
+                  placeholder="Select End Date"
+                  className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:bg-opacity-0 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                />
+                {data.image && (
+                  <img
+                    src={data.image}
+                    alt="product image"
+                    style={{ width: '300px' }}
+                  />
+                )}
+              </div>
+            </div>
 
             <div className="p-2 w-full">
               <button
                 type="submit"
-                onSubmit={handleSubmit}
+                onClick={(e) => handleSubmit(e)}
                 className="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"
               >
                 Start a Campaign

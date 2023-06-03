@@ -12,14 +12,13 @@ import {
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage'
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyBaWfeiC5HVWVhx-oknWQYU8lBvoWK597g',
-  authDomain: 'trac-trace.firebaseapp.com',
-  databaseURL: 'https://trac-trace.firebaseio.com',
-  projectId: 'trac-trace',
-  storageBucket: 'trac-trace.appspot.com',
-  messagingSenderId: '667599813077',
-  appId: '1:667599813077:web:739fe07143940152c0e55c',
-  measurementId: 'G-F9YWBL3Z52',
+  apiKey: 'AIzaSyBkHkEu6dB2ibVW4WOtIidM8nRuXQ3ipnc',
+  authDomain: 'fund-6d1df.firebaseapp.com',
+  projectId: 'fund-6d1df',
+  storageBucket: 'fund-6d1df.appspot.com',
+  messagingSenderId: '82905199120',
+  appId: '1:82905199120:web:a8f8a12f5a8ddd013d5095',
+  measurementId: 'G-FR2Y19S191',
 }
 
 // Initialize Firebase
@@ -80,11 +79,12 @@ const uploadImage = async (file: any) => {
   )
   try {
     const res = await uploadBytes(storageRef, file)
-    const url = await getDownloadURL(res.ref)
+    const url: string = await getDownloadURL(res.ref)
     console.log({ url })
     return url
-  } catch (error) {
+  } catch (error: any) {
     console.log('error', error)
+    return error
   }
 }
 
