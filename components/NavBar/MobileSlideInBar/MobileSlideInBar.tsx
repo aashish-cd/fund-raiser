@@ -6,7 +6,7 @@ import { loginLinks, navLinks } from '../Navbar'
 import MyContext from '@/context/MyContext'
 
 const MobileSlideInBar = ({ showSidebar }: { showSidebar: boolean }) => {
-  const { user, handleSignin } = useContext(MyContext)
+  const { user, handleSignin, isAdmin } = useContext(MyContext)
   return (
     <div
       className={`${styles.SidebarContainer}  ${
@@ -19,6 +19,11 @@ const MobileSlideInBar = ({ showSidebar }: { showSidebar: boolean }) => {
             <p className="primary-text">{nav.name}</p>
           </Link>
         ))}
+        {isAdmin && (
+          <Link href={'/admin'} style={{ textDecoration: 'none' }}>
+            <p className="primary-text">Admin</p>
+          </Link>
+        )}
 
         <button
           className={'primary-button text-white'}
