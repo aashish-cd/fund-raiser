@@ -6,11 +6,11 @@ import { useRouter } from 'next/router'
 import React, { useContext, useEffect } from 'react'
 
 const SignUp = () => {
-  const [haveAccount, setHaveAccount] = React.useState(false)
+  const [haveAccount, setHaveAccount] = React.useState(true)
   const { user } = useContext(MyContext)
   const router = useRouter()
   useEffect(() => {
-    user && router.push('/dashboard/my-campaigns')
+    user && router.push('/dashboard/start-campaign')
   }, [user])
   return (
     <>

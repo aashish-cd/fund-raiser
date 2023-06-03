@@ -3,21 +3,37 @@ import { deleteDonation, editDonation } from '@/firebase'
 import { Campaign } from '@/types'
 import Image from 'next/image'
 import React, { useContext } from 'react'
+import { ToastContainer, toast } from 'react-toastify'
 
 const ApproveDonationCard = () => {
   const { unApprovedCampaigns, setUnApprovedCampaigns, setAllCampaigns } =
     useContext(MyContext)
   const handleApproval = async (id: string, data: Campaign) => {
-    console.log('Approving')
-    await editDonation(id, data)
-    setUnApprovedCampaigns(unApprovedCampaigns?.filter((c: any) => c.id !== id))
-    setAllCampaigns((prev: any) => [...prev, data])
-    console.log('Approved')
+    try {
+      await editDonation(id, data)
+      setUnApprovedCampaigns(
+        unApprovedCampaigns?.filter((c: any) => c.id !== id)
+      )
+      setAllCampaigns((prev: any) => [...prev, data])
+      toast.success('Campaign Approved successfully', {
+        className: 'toast-success',
+      })
+    } catch (error) {
+      toast.error('Error Approving Campaign', { className: 'toast-error' })
+    }
   }
   const handleDecline = async (id: string) => {
-    console.log('Declining')
-    await deleteDonation(id)
-    console.log('Declined')
+    try {
+      await deleteDonation(id)
+      setUnApprovedCampaigns(
+        unApprovedCampaigns?.filter((c: any) => c.id !== id)
+      )
+      toast.success('Campaign Deleted successfully', {
+        className: 'toast-success',
+      })
+    } catch (error) {
+      toast.error('Error Declining Campaign', { className: 'toast-error' })
+    }
   }
   return (
     <section className="text-gray-600 body-font overflow-hidden">

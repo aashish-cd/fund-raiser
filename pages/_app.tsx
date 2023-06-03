@@ -7,6 +7,7 @@ import NavBar from '@/components/NavBar/Navbar'
 import Footer from '@/components/Footer/Footer'
 import styles from '../styles/Home.module.scss'
 import 'react-toastify/dist/ReactToastify.css'
+import { ToastContainer } from 'react-toastify'
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -25,6 +26,18 @@ export default function App({ Component, pageProps }: AppProps) {
         <NavBar />
         <Component {...pageProps} />
         <Footer />
+        <ToastContainer
+          position="bottom-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
       </main>
     </MyProvider>
   )

@@ -11,6 +11,7 @@ interface AppContextInterface {
   setAllCampaigns: any
   unApprovedCampaigns: any
   setUnApprovedCampaigns: any
+  isAdmin: boolean
 }
 const MyContext = createContext<AppContextInterface>({
   data: null,
@@ -23,6 +24,7 @@ const MyContext = createContext<AppContextInterface>({
   setAllCampaigns: null,
   unApprovedCampaigns: null,
   setUnApprovedCampaigns: null,
+  isAdmin: false,
 })
 
 export default MyContext

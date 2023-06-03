@@ -3,6 +3,7 @@ import styles from './DonationCard.module.scss'
 import Image from 'next/image'
 import donationImage from '../Assets/Donation.svg'
 import { Campaign } from '@/types'
+import { toast } from 'react-toastify'
 
 const DonationCard = ({
   data,
@@ -12,6 +13,12 @@ const DonationCard = ({
   text?: string
 }) => {
   console.log({ myCampaigns: data })
+  const handleDonation = async () => {
+    console.log('donation')
+    toast.success('Donation Successful', {
+      className: 'toast-success',
+    })
+  }
   return (
     <>
       <h1 className="primary-text text-center text-3xl mb-5">
@@ -35,7 +42,10 @@ const DonationCard = ({
                 <p className={styles.title}>{item.title}</p>
                 <p className={styles.description}>{item?.description}</p>
                 <div className={styles.row} style={{ marginTop: '1rem' }}>
-                  <button className={'primary-button text-white'}>
+                  <button
+                    className={'primary-button text-white'}
+                    onClick={handleDonation}
+                  >
                     Donate now
                   </button>
                 </div>

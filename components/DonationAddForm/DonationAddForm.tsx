@@ -2,9 +2,11 @@ import MyContext from '@/context/MyContext'
 import { getAllDonations, storeDonation, uploadImage } from '@/firebase'
 import { Campaign } from '@/types'
 import React, { useContext, useEffect, useState } from 'react'
+import { toast } from 'react-toastify'
 
 const DonationAddForm = () => {
   const { user } = useContext(MyContext)
+  const [imageUploading, setImageUploading] = useState(false)
   const [data, setData] = useState<Campaign>({
     title: '',
     description: '',
@@ -28,9 +30,22 @@ const DonationAddForm = () => {
   }
   const handleSubmit = async (e: any) => {
     e.preventDefault()
-
+    if (
+      !data.title ||
+      !data.description ||
+      !data.goalAmount ||
+      !data.category ||
+      !data.endDate ||
+      !data.image
+    ) {
+      toast.error('Please fill all the fields', { className: 'toast-error' })
+      return
+    }
+    if (data.endDate < new Date().toISOString().split('T')[0]) {
+      toast.error('Please enter a valid date', { className: 'toast-error' })
+      return
+    }
     try {
-      console.log('Adding Campaign')
       await storeDonation(data)
       setData({
         title: '',
@@ -43,20 +58,21 @@ const DonationAddForm = () => {
         endDate: '',
         userEmail: user?.email,
       })
-
-      console.log('Campaign Added')
+      toast.success('Campaign Added', { className: 'toast-success' })
     } catch (error) {
       console.log(error)
     }
   }
 
   const handleFileInputChange = async (e: any) => {
+    setImageUploading(true)
     const file = e.target.files[0]
     const fileRef = await uploadImage(file)
     setData({
       ...data,
       image: fileRef,
     })
+    setImageUploading(false)
   }
 
   return (
@@ -214,9 +230,10 @@ const DonationAddForm = () => {
               <button
                 type="submit"
                 onClick={(e) => handleSubmit(e)}
+                disabled={imageUploading}
                 className="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"
               >
-                Start a Campaign
+                {imageUploading ? 'Uploading Image...' : 'Start Campaign'}
               </button>
             </div>
           </form>
