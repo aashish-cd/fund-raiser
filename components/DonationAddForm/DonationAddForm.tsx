@@ -14,7 +14,7 @@ const DonationAddForm = () => {
     category: '',
     isVerified: false,
     endDate: '',
-    userEmail: user.email,
+    userEmail: user?.email,
   })
   const onValueChange = (
     e: React.ChangeEvent<
@@ -41,7 +41,7 @@ const DonationAddForm = () => {
         category: '',
         isVerified: false,
         endDate: '',
-        userEmail: user.email,
+        userEmail: user?.email,
       })
 
       console.log('Campaign Added')
