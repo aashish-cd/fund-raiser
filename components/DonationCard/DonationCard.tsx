@@ -42,10 +42,8 @@ const DonationCard = ({
                 </div>
                 <Line
                   percent={(item.currentAmount / item.goalAmount) * 100}
-                  trailWidth={2}
                   strokeWidth={4}
-                  strokeColor="green"
-                  trailColor="gray"
+                  strokeColor={'#00bbff'}
                 />
                 <p>
                   {((item.currentAmount / item.goalAmount) * 100).toFixed(1)}%
