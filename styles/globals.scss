@@ -43,8 +43,9 @@ body {
 .primary-text {
   color: $primary-text-color;
   // font-size: 1rem;
-  font-weight: 600;
+  // font-weight: 600;
 }
+
 .primary-text:hover {
   color: $primary-logo-color;
   transition: 0.3s;
