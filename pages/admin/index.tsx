@@ -6,6 +6,9 @@ import React, { useContext, useEffect } from 'react'
 export const whiteListedAdmins = [
   'bhattaashish303@gmail.com',
   'aashishbhatt258@gmail.com',
+  'mkchauhan647@gmail.com',
+  'joshinischal11@gmail.com',
+  'willsonghimire58@gmail.com',
 ]
 
 const Admin = () => {
