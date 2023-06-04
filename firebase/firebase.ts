@@ -42,6 +42,7 @@ const editDonation = async (id: string, data: Campaign) => {
 }
 
 const getUser = async (id: string) => {
+  if (!id) return
   const docRef = doc(db, 'users', id)
   const docSnap = await getDoc(docRef)
   if (docSnap.exists()) {
@@ -51,6 +52,7 @@ const getUser = async (id: string) => {
   }
 }
 const updateOrCreateUser = async (id: string, data: User) => {
+  if (!id) return
   const docRef = doc(db, 'users', id)
 
   const docSnap = await getDoc(docRef)

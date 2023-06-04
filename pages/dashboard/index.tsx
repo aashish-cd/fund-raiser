@@ -32,7 +32,7 @@ const Dashboard = () => {
         </button>
       }
 
-      {showEditModal && (
+      {showEditModal && user && (
         <EditProfileModal
           email={user.email}
           setShowEditModal={setShowEditModal}
