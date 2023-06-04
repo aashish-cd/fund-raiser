@@ -5,6 +5,8 @@ import donationImage from '../Assets/Donation.svg'
 import { Campaign } from '@/types'
 import { toast } from 'react-toastify'
 import { Line } from 'rc-progress'
+// import khaltipay from '../../utils/khalti'
+import KhaltiPay from '../../utils/khalti'
 
 const DonationCard = ({
   data,
@@ -16,10 +18,25 @@ const DonationCard = ({
   console.log({ myCampaigns: data })
   const handleDonation = async () => {
     console.log('donation')
-    toast.success('Donation Successful', {
-      className: 'toast-success',
-    })
+   
   }
+
+    
+    const handlePayment = () => {
+      const khaltiCheckout = KhaltiPay();
+      khaltiCheckout.show({
+        amount: 1000, // Amount in paisa (e.g., 1000 paisa = NPR 10)
+        // Add other required parameters such as "mobile", "email", etc.
+      });
+
+      console.log(khaltiCheckout);
+  
+
+
+  }
+
+
+
   return (
     <>
       <h1 className="primary-text text-center text-3xl mb-5">
@@ -54,7 +71,7 @@ const DonationCard = ({
                 <div className={styles.row} style={{ marginTop: '1rem' }}>
                   <button
                     className={'primary-button text-white'}
-                    onClick={handleDonation}
+                    onClick={handlePayment}
                   >
                     Donate now
                   </button>
