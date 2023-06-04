@@ -70,7 +70,7 @@ const EditProfileModal = ({
           backgroundColor: '#ddd',
           padding: '1rem',
           borderRadius: 10,
-          zIndex: 11,
+          zIndex: 111,
           width: '90%',
           // backdropFilter: 'blur(10px)',
           // backfaceVisibility: 'hidden',
