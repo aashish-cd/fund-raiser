@@ -27,13 +27,11 @@ const MyProvider = ({ children }: any) => {
   }
   const fetchDonations = async () => {
     const res = await getAllDonations()
-    console.log(res)
     setAllCampaigns(res.filter((campaign: Campaign) => campaign.isVerified))
   }
 
   const fetchUnApprovedDonations = async () => {
     const res = await getAllDonations()
-    console.log(res)
     setUnApprovedCampaigns(
       res.filter((campaign: Campaign) => !campaign.isVerified)
     )

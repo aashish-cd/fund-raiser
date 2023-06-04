@@ -16,6 +16,7 @@ const Dashboard = () => {
   }, [user])
   const fetchUserData = async () => {
     const res = await getUser(user?.email)
+    setShowEditModal(false)
     if (!res) setShowEditModal(true)
   }
   useEffect(() => {

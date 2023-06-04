@@ -16,6 +16,7 @@ import {
 } from 'firebase/auth'
 
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage'
+import { toast } from 'react-toastify'
 
 const firebaseConfig = {
   apiKey: 'AIzaSyBkHkEu6dB2ibVW4WOtIidM8nRuXQ3ipnc',
@@ -40,9 +41,17 @@ const signInWithEmailPassword = ({
   email: string
   password: string
 }) =>
-  signInWithEmailAndPassword(auth, email, password).then((user) =>
-    console.log({ user })
-  )
+  signInWithEmailAndPassword(auth, email, password)
+    .then((user) =>
+      toast.success('Logged in successfully', {
+        className: 'toast-success',
+      })
+    )
+    .catch((error) => {
+      toast.error(error.message, {
+        className: 'toast-error',
+      })
+    })
 
 const signUpWithEmailPassword = ({
   email,
@@ -54,13 +63,17 @@ const signUpWithEmailPassword = ({
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       // Signed in
-      const user = userCredential.user
-      console.log({ signup: user })
+      toast.success('Account created successfully', {
+        className: 'toast-success',
+      })
       // ...
     })
     .catch((error) => {
       console.error(error)
       // ..
+      toast.error(error.message, {
+        className: 'toast-error',
+      })
     })
 
 let google_provider = new GoogleAuthProvider()
@@ -68,17 +81,20 @@ let google_provider = new GoogleAuthProvider()
 const signInWithGoogle = () =>
   signInWithPopup(auth, google_provider)
     .then(async (res) => {
-      console.log('google signIn response', res)
+      toast.success('Logged in successfully', {
+        className: 'toast-success',
+      })
     })
     .catch((err) => {
-      console.log('google signIn error', err)
+      toast.error(err.message, {
+        className: 'toast-error',
+      })
     })
 
 const storage = getStorage()
 // 'file' comes from the Blob or File API
 const uploadImage = async (file: any) => {
   const fileName = Date.now().toString()
-  console.log(file.name)
   const storageRef = ref(
     storage,
     `images/${fileName}.${file.name.split('.'[1])}`
@@ -86,7 +102,6 @@ const uploadImage = async (file: any) => {
   try {
     const res = await uploadBytes(storageRef, file)
     const url: string = await getDownloadURL(res.ref)
-    console.log({ url })
     return url
   } catch (error: any) {
     console.log('error', error)

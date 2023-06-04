@@ -52,7 +52,7 @@ const EditProfileModal = ({
       toast.success('Profile Updated', {
         className: 'toast-success',
       })
-      console.log({ data })
+      setShowEditModal(false)
     } catch (error) {
       toast.error('Error updating profile', {
         className: 'toast-error',

@@ -15,27 +15,19 @@ const DonationCard = ({
   data: Campaign[]
   text?: string
 }) => {
-  console.log({ myCampaigns: data })
   const handleDonation = async () => {
     console.log('donation')
-   
   }
 
-    
-    const handlePayment = () => {
-      const khaltiCheckout = KhaltiPay();
-      khaltiCheckout.show({
-        amount: 1000, // Amount in paisa (e.g., 1000 paisa = NPR 10)
-        // Add other required parameters such as "mobile", "email", etc.
-      });
+  const handlePayment = () => {
+    const khaltiCheckout = KhaltiPay()
+    khaltiCheckout.show({
+      amount: 1000, // Amount in paisa (e.g., 1000 paisa = NPR 10)
+      // Add other required parameters such as "mobile", "email", etc.
+    })
 
-      console.log(khaltiCheckout);
-  
-
-
+    console.log(khaltiCheckout)
   }
-
-
 
   return (
     <>
