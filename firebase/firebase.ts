@@ -1,4 +1,4 @@
-import { Campaign } from '@/types'
+import { Campaign, User } from '@/types'
 import {
   db,
   auth,
@@ -18,9 +18,11 @@ import {
   orderBy,
   updateDoc,
   getDoc,
+  setDoc,
 } from 'firebase/firestore'
 
 const campaignRef = collection(db, 'campaigns')
+const userRef = collection(db, 'users')
 
 const getAllDonations = async () => {
   const q = query(campaignRef, orderBy('createdAt', 'desc'))
@@ -39,6 +41,26 @@ const editDonation = async (id: string, data: Campaign) => {
   await updateDoc(docRef, { ...data, isVerified: true })
 }
 
+const getUser = async (id: string) => {
+  const docRef = doc(db, 'users', id)
+  const docSnap = await getDoc(docRef)
+  if (docSnap.exists()) {
+    return docSnap.data()
+  } else {
+    return null
+  }
+}
+const updateOrCreateUser = async (id: string, data: User) => {
+  const docRef = doc(db, 'users', id)
+
+  const docSnap = await getDoc(docRef)
+  if (docSnap.exists()) {
+    await updateDoc(docRef, { ...data, id })
+  } else {
+    await setDoc(docRef, { ...data, id })
+  }
+}
+
 export {
   getAllDonations,
   storeDonation,
@@ -49,4 +71,6 @@ export {
   signInWithGoogle,
   signInWithEmailPassword,
   signUpWithEmailPassword,
+  getUser,
+  updateOrCreateUser,
 }

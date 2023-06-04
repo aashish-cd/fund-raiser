@@ -14,6 +14,7 @@ const MyProvider = ({ children }: any) => {
   const [unApprovedCampaigns, setUnApprovedCampaigns] =
     useState<Array<Campaign>>()
   const [isAdmin, setIsAdmin] = useState(false)
+  const [showEditModal, setShowEditModal] = useState(false)
 
   const handleSignin = () => {
     if (user) {
@@ -64,6 +65,9 @@ const MyProvider = ({ children }: any) => {
     unApprovedCampaigns,
     setUnApprovedCampaigns,
     isAdmin,
+    setIsAdmin,
+    showEditModal,
+    setShowEditModal,
   }
 
   return <MyContext.Provider value={value}>{children}</MyContext.Provider>

@@ -8,6 +8,7 @@ import {
   signInWithGoogle,
   signInWithEmailPassword,
   signUpWithEmailPassword,
+  getUser,
 } from './firebase'
 export {
   getAllDonations,
@@ -19,4 +20,5 @@ export {
   signInWithGoogle,
   signInWithEmailPassword,
   signUpWithEmailPassword,
+  getUser,
 }

@@ -5,7 +5,13 @@ import Link from 'next/link'
 import { loginLinks, navLinks } from '../Navbar'
 import MyContext from '@/context/MyContext'
 
-const MobileSlideInBar = ({ showSidebar }: { showSidebar: boolean }) => {
+const MobileSlideInBar = ({
+  showSidebar,
+  setShowSidebar,
+}: {
+  showSidebar: boolean
+  setShowSidebar: any
+}) => {
   const { user, handleSignin, isAdmin } = useContext(MyContext)
   return (
     <div
@@ -13,7 +19,10 @@ const MobileSlideInBar = ({ showSidebar }: { showSidebar: boolean }) => {
         showSidebar ? styles.showSidebar : styles.hideSidebar
       }`}
     >
-      <div className={` ${styles.navLinks}`}>
+      <div
+        className={` ${styles.navLinks}`}
+        onClick={() => setShowSidebar(false)}
+      >
         {(user ? loginLinks : navLinks).map((nav, index) => (
           <Link href={nav.link} key={index} style={{ textDecoration: 'none' }}>
             <p className="primary-text">{nav.name}</p>

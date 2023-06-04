@@ -183,7 +183,6 @@ const DonationAddForm = () => {
                   className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white  focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                 >
                   <option selected>Choose category</option>
-
                   <option value="disaster">Disaster</option>
                   <option value="personal stories of affected peoples">
                     Personal stories of affected peoples

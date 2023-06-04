@@ -1,6 +1,12 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app'
-import { getFirestore } from 'firebase/firestore'
+import {
+  addDoc,
+  collection,
+  doc,
+  getDoc,
+  getFirestore,
+} from 'firebase/firestore'
 import {
   createUserWithEmailAndPassword,
   getAuth,
@@ -61,7 +67,7 @@ let google_provider = new GoogleAuthProvider()
 
 const signInWithGoogle = () =>
   signInWithPopup(auth, google_provider)
-    .then((res) => {
+    .then(async (res) => {
       console.log('google signIn response', res)
     })
     .catch((err) => {

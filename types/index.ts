@@ -1,13 +1,14 @@
 // defining types in ts
 
 export type User = {
+  id?: string
   demographics: {
     age: number
     gender: string
     location: string
   }
   interests: string[]
-  isAdmin: boolean
+  isAdmin?: boolean
 }
 
 export type Campaign = {

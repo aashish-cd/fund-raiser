@@ -10,7 +10,7 @@ const SignUp = () => {
   const { user } = useContext(MyContext)
   const router = useRouter()
   useEffect(() => {
-    user && router.push('/dashboard/start-campaign')
+    user && router.push('/dashboard')
   }, [user])
   return (
     <>

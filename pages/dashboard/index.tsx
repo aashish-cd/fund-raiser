@@ -1,19 +1,44 @@
 import DonationAddForm from '@/components/DonationAddForm/DonationAddForm'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import MyContext from '@/context/MyContext'
+import EditProfileModal from '@/components/EditProfileModal/EditProfileModal'
+import { getUser } from '@/firebase'
 
 const Dashboard = () => {
   const router = useRouter()
 
-  const { user } = useContext(MyContext)
+  const { user, showEditModal, setShowEditModal } = useContext(MyContext)
 
   useEffect(() => {
     !user && router.push('/login')
   }, [user])
+  const fetchUserData = async () => {
+    const res = await getUser(user?.email)
+    if (!res) setShowEditModal(true)
+  }
+  useEffect(() => {
+    fetchUserData()
+  }, [])
   return (
-    <section className="text-gray-600 body-font w-full">
+    <section className="text-gray-600 body-font w-full flex flex-col justify-center">
+      {
+        <button
+          className="primary-button hover:bg-blue-500 text-white "
+          onClick={() => setShowEditModal((prev: any) => !prev)}
+        >
+          <h1>Edit your profile Details</h1>
+        </button>
+      }
+
+      {showEditModal && (
+        <EditProfileModal
+          email={user.email}
+          setShowEditModal={setShowEditModal}
+        />
+      )}
+
       <div className="flex flex-wrap justify-center  m-10">
         <Link
           href="/dashboard/start-campaign"
