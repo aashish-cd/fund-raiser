@@ -2,6 +2,8 @@ import React from 'react'
 import styles from './DonationCard.module.scss'
 import Image from 'next/image'
 import donationImage from '../Assets/Donation.svg'
+// import khaltipay from '../../utils/khalti'
+import KhaltiPay from '../../utils/khalti'
 
 const DonationCard = ({
   data,
@@ -10,6 +12,21 @@ const DonationCard = ({
   data: Array<any>
   text?: string
 }) => {
+
+    
+    const handlePayment = () => {
+      const khaltiCheckout = KhaltiPay();
+      khaltiCheckout.show({
+        amount: 1000, // Amount in paisa (e.g., 1000 paisa = NPR 10)
+        // Add other required parameters such as "mobile", "email", etc.
+      });
+  
+
+
+  }
+
+
+
   return (
     <div className={styles.container}>
       <h1 className="primary-text text-3xl mb-5">
@@ -37,7 +54,7 @@ const DonationCard = ({
                 adipisicing elit. Ex, hic.
               </p>
               <div className={styles.row} style={{ marginTop: '1rem' }}>
-                <button className={'primary-button text-white'}>
+                <button onClick={handlePayment}className={'primary-button text-white'}>
                   Donate now
                 </button>
               </div>
