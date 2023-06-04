@@ -18,9 +18,7 @@ const DonationCard = ({
   console.log({ myCampaigns: data })
   const handleDonation = async () => {
     console.log('donation')
-    toast.success('Donation Successful', {
-      className: 'toast-success',
-    })
+   
   }
 
     
@@ -30,6 +28,8 @@ const DonationCard = ({
         amount: 1000, // Amount in paisa (e.g., 1000 paisa = NPR 10)
         // Add other required parameters such as "mobile", "email", etc.
       });
+
+      console.log(khaltiCheckout);
   
 
 
@@ -71,7 +71,7 @@ const DonationCard = ({
                 <div className={styles.row} style={{ marginTop: '1rem' }}>
                   <button
                     className={'primary-button text-white'}
-                    onClick={handleDonation}
+                    onClick={handlePayment}
                   >
                     Donate now
                   </button>

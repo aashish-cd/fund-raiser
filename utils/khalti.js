@@ -1,5 +1,5 @@
 import KhaltiCheckout from "khalti-checkout-web";
-
+import {toast} from "react-toastify"
 const KhaltiPay = () => {
     let config = {
         // replace this key with yours
@@ -14,6 +14,9 @@ const KhaltiPay = () => {
             onSuccess (payload) {
                 // hit merchant api for initiating verfication
                 console.log(payload);
+                toast.success('Donation Successful', {
+                    className: 'toast-success',
+                  })
 
             },
             // onError handler is optional
