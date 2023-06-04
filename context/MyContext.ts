@@ -7,6 +7,13 @@ interface AppContextInterface {
   setIsLoggedin: any
   handleSignin: any
   user: any
+  allCampaigns: any
+  setAllCampaigns: any
+  unApprovedCampaigns: any
+  setUnApprovedCampaigns: any
+  isAdmin: boolean
+  showEditModal: boolean
+  setShowEditModal: any
 }
 const MyContext = createContext<AppContextInterface>({
   data: null,
@@ -15,6 +22,13 @@ const MyContext = createContext<AppContextInterface>({
   setIsLoggedin: null,
   handleSignin: null,
   user: null,
+  allCampaigns: null,
+  setAllCampaigns: null,
+  unApprovedCampaigns: null,
+  setUnApprovedCampaigns: null,
+  isAdmin: false,
+  showEditModal: false,
+  setShowEditModal: null,
 })
 
 export default MyContext

@@ -1,37 +1,84 @@
-import React, { useState } from 'react'
-
-interface donationAddFormProps {
-  name: string
-  target: number
-  description: string
-  postedBy: string
-  date: string
-}
+import MyContext from '@/context/MyContext'
+import { getAllDonations, storeDonation, uploadImage } from '@/firebase'
+import { Campaign } from '@/types'
+import React, { useContext, useEffect, useState } from 'react'
+import { toast } from 'react-toastify'
 
 const DonationAddForm = () => {
-  const [data, setData] = useState<donationAddFormProps>({
-    name: '',
-    target: 0,
+  const { user } = useContext(MyContext)
+  const [imageUploading, setImageUploading] = useState(false)
+  const [data, setData] = useState<Campaign>({
+    title: '',
     description: '',
-    postedBy: '',
-    date: Date(),
+    goalAmount: 0,
+    currentAmount: 0,
+    image: '',
+    category: '',
+    isVerified: false,
+    endDate: '',
+    userEmail: user?.email,
   })
   const onValueChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
   ) => {
     setData({
       ...data,
       [e.target.name]: e.target.value,
     })
   }
-  const handleSubmit = (e: any) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault()
-    console.log(data)
+    if (
+      !data.title ||
+      !data.description ||
+      !data.goalAmount ||
+      !data.category ||
+      !data.endDate ||
+      !data.image
+    ) {
+      toast.error('Please fill all the fields', { className: 'toast-error' })
+      return
+    }
+    if (data.endDate < new Date().toISOString().split('T')[0]) {
+      toast.error('Please enter a valid date', { className: 'toast-error' })
+      return
+    }
+    try {
+      await storeDonation(data)
+      setData({
+        title: '',
+        description: '',
+        goalAmount: 0,
+        currentAmount: 0,
+        image: '',
+        category: '',
+        isVerified: false,
+        endDate: '',
+        userEmail: user?.email,
+      })
+      toast.success('Campaign Added', { className: 'toast-success' })
+    } catch (error) {
+      console.log(error)
+    }
   }
+
+  const handleFileInputChange = async (e: any) => {
+    setImageUploading(true)
+    const file = e.target.files[0]
+    const fileRef = await uploadImage(file)
+    setData({
+      ...data,
+      image: fileRef,
+    })
+    setImageUploading(false)
+  }
+
   return (
     <section className="text-gray-600 body-font relative">
-      <div className="container px-5 py-24 mx-auto">
-        <div className="flex flex-col text-center w-full mb-12">
+      <div className="container px-5 py-2 mx-auto">
+        <div className="flex flex-col text-center w-full mb-4">
           <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
             Start Campaign
           </h1>
@@ -44,18 +91,18 @@ const DonationAddForm = () => {
             <div className="p-2 w-full">
               <div className="relative">
                 <label
-                  htmlFor="name"
+                  htmlFor="title"
                   className="leading-7 text-sm text-gray-600"
                 >
-                  Name
+                  Title
                 </label>
                 <input
                   type="text"
-                  id="name"
-                  name="name"
-                  placeholder="Campaign Name"
+                  id="title"
+                  name="title"
+                  placeholder="Campaign Title"
                   onChange={onValueChange}
-                  value={data.name}
+                  value={data.title}
                   className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                 />
               </div>
@@ -63,20 +110,19 @@ const DonationAddForm = () => {
             <div className="p-2 w-full">
               <div className="relative">
                 <label
-                  htmlFor="target"
+                  htmlFor="goalAmount"
                   className="leading-7 text-sm text-gray-600"
                 >
-                  Target
+                  Goal Amount
                 </label>
                 <input
                   type="number"
-                  id="target"
-                  name="target"
+                  id="goalAmount"
+                  name="goalAmount"
                   onChange={onValueChange}
-                  value={data.target}
-                  step={500}
-                  min={500}
-                  placeholder="Campaign Target in Rupees"
+                  value={data.goalAmount}
+                  step={100}
+                  placeholder="Campaign's Goal in Rupees"
                   className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                 />
               </div>
@@ -100,13 +146,93 @@ const DonationAddForm = () => {
                 ></textarea>
               </div>
             </div>
+            {/* end date */}
+            <div className="p-2 w-full">
+              <div className="relative">
+                <label
+                  htmlFor="endDate"
+                  className="leading-7 text-sm text-gray-600"
+                >
+                  End Date (In AD)
+                </label>
+                <input
+                  type="date"
+                  id="endDate"
+                  name="endDate"
+                  onChange={onValueChange}
+                  value={data.endDate}
+                  placeholder="Select End Date"
+                  className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:bg-opacity-0 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                />
+              </div>
+            </div>
+            <div className="p-2 w-full">
+              <div className="relative">
+                <label
+                  htmlFor="category"
+                  className="leading-7 text-sm text-gray-600"
+                >
+                  Select Category
+                </label>
+                <select
+                  id="category"
+                  name="category"
+                  // onSelect={(e) => console.log(e.target)}
+                  onChange={onValueChange}
+                  value={data.category}
+                  className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white  focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                >
+                  <option selected>Choose category</option>
+                  <option value="disaster">Disaster</option>
+                  <option value="personal stories of affected peoples">
+                    Personal stories of affected peoples
+                  </option>
+                  <option value="health campaign">Health campaign</option>
+                  <option value="environment">Environment</option>
+                  <option value="hunger">Hunger</option>
+                  <option value="animals">Animals</option>
+
+                  <option value="refugee campaign">Refugee campaign</option>
+                  <option value="homelessness">Homelessness</option>
+                  <option value="childcare">Childcare</option>
+                  <option value="education">Education</option>
+                </select>
+              </div>
+            </div>
+            <div className="p-2 w-full">
+              <div className="relative">
+                <label
+                  htmlFor="image"
+                  className="leading-7 text-sm text-gray-600"
+                >
+                  Select Image
+                </label>
+                <input
+                  id="image"
+                  name="image"
+                  type="file"
+                  onChange={(e) => handleFileInputChange(e)}
+                  placeholder="Select End Date"
+                  className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:bg-opacity-0 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                />
+                {data.image && (
+                  <img
+                    src={data.image}
+                    alt="product image"
+                    style={{ width: '300px' }}
+                  />
+                )}
+              </div>
+            </div>
+
             <div className="p-2 w-full">
               <button
                 type="submit"
-                onSubmit={handleSubmit}
+                onClick={(e) => handleSubmit(e)}
+                disabled={imageUploading}
                 className="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"
               >
-                Start a Campaign
+                {imageUploading ? 'Uploading Image...' : 'Start Campaign'}
               </button>
             </div>
           </form>

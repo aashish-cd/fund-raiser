@@ -9,7 +9,7 @@ import { useRouter } from 'next/router'
 import MyContext from '@/context/MyContext'
 
 const NavBar = () => {
-  const { user, handleSignin } = useContext(MyContext)
+  const { user, handleSignin, isAdmin } = useContext(MyContext)
   const [showSidebar, setShowSidebar] = useState(false)
   const reset = () => setShowSidebar(() => false)
   const set = () => setShowSidebar(() => true)
@@ -48,6 +48,11 @@ const NavBar = () => {
                   <p className="primary-text">{nav.name}</p>
                 </Link>
               ))}
+              {isAdmin && (
+                <Link href="/admin" style={{ textDecoration: 'none' }}>
+                  <p className="primary-text">Admin</p>
+                </Link>
+              )}
 
               <button
                 className={'primary-button text-white'}
@@ -73,7 +78,12 @@ const NavBar = () => {
           </div>
         </div>
         <div className={styles.NavBarmbl}>
-          {<MobileSlideInBar showSidebar={showSidebar} />}
+          {
+            <MobileSlideInBar
+              showSidebar={showSidebar}
+              setShowSidebar={setShowSidebar}
+            />
+          }
         </div>
       </nav>
     </>
@@ -103,12 +113,8 @@ export const loginLinks = [
     link: '/campaigns',
   },
   {
-    name: 'My Campaigns',
-    link: '/dashboard/my-campaigns',
-  },
-  {
-    name: 'Start Campaign',
-    link: '/dashboard/start-campaign',
+    name: 'My Profile',
+    link: '/dashboard',
   },
 ]
 export default NavBar
