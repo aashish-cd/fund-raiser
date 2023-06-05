@@ -5,6 +5,7 @@ import React, { useContext } from 'react'
 const TopDoners = () => {
   const { allInteractions } = useContext(MyContext)
   const router = useRouter()
+  if (!allInteractions) return <div>Loading...</div>
   return (
     <div>
       <div className="flex flex-col">
