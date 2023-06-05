@@ -14,6 +14,8 @@ interface AppContextInterface {
   isAdmin: boolean
   showEditModal: boolean
   setShowEditModal: any
+  allInteractions: any
+  setAllInteractions: any
 }
 const MyContext = createContext<AppContextInterface>({
   data: null,
@@ -29,6 +31,8 @@ const MyContext = createContext<AppContextInterface>({
   isAdmin: false,
   showEditModal: false,
   setShowEditModal: null,
+  allInteractions: null,
+  setAllInteractions: null,
 })
 
 export default MyContext

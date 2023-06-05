@@ -3,12 +3,12 @@ import { deleteDonation, editDonation } from '@/firebase'
 import { Campaign } from '@/types'
 import Image from 'next/image'
 import React, { useContext } from 'react'
-import { ToastContainer, toast } from 'react-toastify'
+import { toast } from 'react-toastify'
 
 const ApproveDonationCard = () => {
   const { unApprovedCampaigns, setUnApprovedCampaigns, setAllCampaigns } =
     useContext(MyContext)
-  const handleApproval = async (id: string, data: Campaign) => {
+  const handleApproval = async (id: string | undefined, data: Campaign) => {
     try {
       await editDonation(id, data)
       setUnApprovedCampaigns(

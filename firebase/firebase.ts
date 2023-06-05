@@ -1,4 +1,4 @@
-import { Campaign, User } from '@/types'
+import { Campaign, Interaction, User } from '@/types'
 import {
   db,
   auth,
@@ -23,6 +23,7 @@ import {
 
 const campaignRef = collection(db, 'campaigns')
 const userRef = collection(db, 'users')
+const interactionRef = collection(db, 'interactions')
 
 const getAllDonations = async () => {
   const q = query(campaignRef, orderBy('createdAt', 'desc'))
@@ -63,6 +64,20 @@ const updateOrCreateUser = async (id: string, data: User) => {
   }
 }
 
+const addInteraction = async (data: Interaction) => {
+  await addDoc(interactionRef, {
+    ...data,
+    donationAmount: Number(data.donationAmount),
+  })
+}
+const getAllInteractions = async () => {
+  const q = query(interactionRef, orderBy('donationAmount', 'desc'))
+  const donationsSnapshot = await getDocs(q)
+  let data: Interaction[] = []
+  donationsSnapshot.forEach((doc) => data.push({ id: doc.id, ...doc.data() }))
+  return data
+}
+
 export {
   getAllDonations,
   storeDonation,
@@ -75,4 +90,6 @@ export {
   signUpWithEmailPassword,
   getUser,
   updateOrCreateUser,
+  addInteraction,
+  getAllInteractions,
 }

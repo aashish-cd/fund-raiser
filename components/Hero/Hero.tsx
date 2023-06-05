@@ -4,8 +4,10 @@ import Typewriter from 'typewriter-effect'
 
 import Image from 'next/image'
 import hero from '../Assets/Hero.svg'
+import { useRouter } from 'next/router'
 
 const Hero = () => {
+  const router = useRouter()
   return (
     <div className={styles.container}>
       <div className={styles.heroContainer}>
@@ -20,7 +22,12 @@ const Hero = () => {
               true.
             </p>
             <div className={styles.buttonContainer}>
-              <button className="primary-button text-white">Donate now</button>
+              <button
+                className="primary-button text-white"
+                onClick={() => router.push('/campaigns')}
+              >
+                Donate now
+              </button>
               <button className="secondary-button text-white">
                 Watch Video
               </button>

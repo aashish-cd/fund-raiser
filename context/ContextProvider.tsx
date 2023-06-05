@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react'
 import MyContext from './MyContext'
 import { auth, getAllDonations } from '@/firebase'
 import { useRouter } from 'next/router'
-import { Campaign } from '@/types'
+import { Campaign, Interaction } from '@/types'
 import { whiteListedAdmins } from '@/pages/admin'
+import { getAllInteractions } from '@/firebase/firebase'
 
 const MyProvider = ({ children }: any) => {
   const [data, setData] = useState([])
@@ -15,6 +16,7 @@ const MyProvider = ({ children }: any) => {
     useState<Array<Campaign>>()
   const [isAdmin, setIsAdmin] = useState(false)
   const [showEditModal, setShowEditModal] = useState(false)
+  const [allInteractions, setAllInteractions] = useState<Array<Interaction>>()
 
   const handleSignin = () => {
     if (user) {
@@ -29,7 +31,11 @@ const MyProvider = ({ children }: any) => {
     const res = await getAllDonations()
     setAllCampaigns(res.filter((campaign: Campaign) => campaign.isVerified))
   }
-
+  const fetchAllInteractions = async () => {
+    const res = await getAllInteractions()
+    setAllInteractions(res)
+    console.log({ interactions: res })
+  }
   const fetchUnApprovedDonations = async () => {
     const res = await getAllDonations()
     setUnApprovedCampaigns(
@@ -48,6 +54,7 @@ const MyProvider = ({ children }: any) => {
   useEffect(() => {
     fetchDonations()
     fetchUnApprovedDonations()
+    fetchAllInteractions()
   }, [])
 
   const value = {
@@ -66,6 +73,8 @@ const MyProvider = ({ children }: any) => {
     setIsAdmin,
     showEditModal,
     setShowEditModal,
+    allInteractions,
+    setAllInteractions,
   }
 
   return <MyContext.Provider value={value}>{children}</MyContext.Provider>

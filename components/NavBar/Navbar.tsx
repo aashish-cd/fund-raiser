@@ -102,6 +102,10 @@ export const navLinks = [
     name: 'Campaigns',
     link: '/campaigns',
   },
+  {
+    name: 'Top Donors',
+    link: '/top-donors',
+  },
 ]
 export const loginLinks = [
   {
@@ -111,6 +115,10 @@ export const loginLinks = [
   {
     name: 'Campaigns',
     link: '/campaigns',
+  },
+  {
+    name: 'Top Donors',
+    link: '/top-donors',
   },
   {
     name: 'My Profile',
