@@ -16,6 +16,8 @@ interface AppContextInterface {
   setShowEditModal: any
   allInteractions: any
   setAllInteractions: any
+  recommendedDonations: any
+  setRecommendedDonations: any
 }
 const MyContext = createContext<AppContextInterface>({
   data: null,
@@ -33,6 +35,8 @@ const MyContext = createContext<AppContextInterface>({
   setShowEditModal: null,
   allInteractions: null,
   setAllInteractions: null,
+  recommendedDonations: null,
+  setRecommendedDonations: null,
 })
 
 export default MyContext

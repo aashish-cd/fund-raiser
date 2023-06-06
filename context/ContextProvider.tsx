@@ -17,6 +17,7 @@ const MyProvider = ({ children }: any) => {
   const [isAdmin, setIsAdmin] = useState(false)
   const [showEditModal, setShowEditModal] = useState(false)
   const [allInteractions, setAllInteractions] = useState<Array<Interaction>>()
+  const [recommendedDonations, setRecommendedDonations] = useState()
 
   const handleSignin = () => {
     if (user) {
@@ -26,6 +27,11 @@ const MyProvider = ({ children }: any) => {
       router.push('/login')
       setIsAdmin(false)
     }
+  }
+  const fetchRecommendedDonations = async () => {
+    // const res = await recommendFundraisers(user?.email, 5)
+    // console.log(res)
+    // setAllCampaigns(res.filter((campaign: Campaign) => campaign.isVerified))
   }
   const fetchDonations = async () => {
     const res = await getAllDonations()
@@ -75,6 +81,8 @@ const MyProvider = ({ children }: any) => {
     setShowEditModal,
     allInteractions,
     setAllInteractions,
+    recommendedDonations,
+    setRecommendedDonations,
   }
 
   return <MyContext.Provider value={value}>{children}</MyContext.Provider>
