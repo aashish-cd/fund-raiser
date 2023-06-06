@@ -22,7 +22,7 @@ const EditProfileModal = ({
     },
     interests: [
       'disaster',
-      'personal stories of affected peoples',
+
       'health campaign',
       'environment',
       'hunger',
@@ -174,7 +174,6 @@ const EditProfileModal = ({
                     Choose Interests from here:{' '}
                     {[
                       'disaster',
-                      'personal stories of affected peoples',
                       'health campaign',
                       'environment',
                       'hunger',

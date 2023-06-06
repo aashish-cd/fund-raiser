@@ -184,9 +184,7 @@ const DonationAddForm = () => {
                 >
                   <option selected>Choose category</option>
                   <option value="disaster">Disaster</option>
-                  <option value="personal stories of affected peoples">
-                    Personal stories of affected peoples
-                  </option>
+
                   <option value="health campaign">Health campaign</option>
                   <option value="environment">Environment</option>
                   <option value="hunger">Hunger</option>
