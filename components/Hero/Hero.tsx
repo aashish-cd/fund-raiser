@@ -28,7 +28,10 @@ const Hero = () => {
               >
                 Donate now
               </button>
-              <button className="secondary-button text-white">
+              <button
+                className="primary-button text-white"
+                style={{ background: '#ff585f' }}
+              >
                 Watch Video
               </button>
             </div>

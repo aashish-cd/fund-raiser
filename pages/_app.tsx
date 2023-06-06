@@ -26,6 +26,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <NavBar />
         <div className="mt-[100px]"></div>
         <Component {...pageProps} />
+        <hr className="w-[100vw] mt-16 bg-gray-600 h-[2px]" />
         <Footer />
         <ToastContainer
           position="bottom-center"
