@@ -1,4 +1,5 @@
 import ApproveDonationCard from '@/components/Admin/ApproveDonationCard'
+import DeleteDonations from '@/components/Admin/DeleteDonations'
 import MyContext from '@/context/MyContext'
 import { useRouter } from 'next/router'
 import React, { useContext, useEffect } from 'react'
@@ -21,6 +22,7 @@ const Admin = () => {
   return (
     <div>
       <ApproveDonationCard />
+      <DeleteDonations />
     </div>
   )
 }

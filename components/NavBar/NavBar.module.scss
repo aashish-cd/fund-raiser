@@ -6,13 +6,16 @@
   width: 100%;
   display: flex;
   z-index: 99;
+  position: fixed;
+  top: 0;
+  background-color: rgba(255, 255, 255, 0.12);
 }
 .MainDiv {
   width: 100%;
   padding-top: 15px;
+  height: 100px;
 
-  min-height: 100px;
-  border-bottom: 0.1rem solid rgba(255, 255, 255, 0.12);
+  border-bottom: 0.1rem solid rgba(0, 0, 0, 0.2);
 
   .Inter {
     height: 100%;

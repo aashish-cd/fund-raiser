@@ -17,10 +17,6 @@ const DonationCard = ({
   data: Campaign[]
   text?: string
 }) => {
-  const handleDonation = async () => {
-    console.log('donation')
-  }
-
   return (
     <>
       <h1 className="primary-text text-center text-3xl mb-5">
@@ -63,7 +59,7 @@ const DonationCard = ({
                       className={'primary-button text-white'}
                       // onClick={() => setShowPopup(true)}
                     >
-                      Donate now
+                      View Details
                     </button>
                   </div>
                 </div>

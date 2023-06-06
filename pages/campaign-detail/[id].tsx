@@ -1,6 +1,7 @@
 import DonationForm from '@/components/DonationForm/DonationForm'
 import MyContext from '@/context/MyContext'
 import KhaltiPay from '@/utils/khalti'
+import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { Line } from 'rc-progress'
 import React, { useContext, useState } from 'react'
@@ -19,12 +20,14 @@ const CampaignDetail = () => {
       <section className="text-gray-600 body-font overflow-hidden">
         <div className="container px-5 py-24 mx-auto">
           <div className="lg:w-full mx-auto flex flex-wrap lg:flex-nowrap">
-            <img
-              alt="ecommerce"
+            <Image
+              height={350}
+              width={350}
+              alt={campaignDetail?.title}
               className="lg:w-[350px] w-full lg:h-[350px] h-60 object-cover object-center rounded"
               src={campaignDetail?.image}
             />
-            <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
+            <div className="flex flex-col gap-3 lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
               <h2 className="text-sm title-font text-gray-500 tracking-widest">
                 {campaignDetail?.category.toUpperCase()}
               </h2>
@@ -62,7 +65,7 @@ const CampaignDetail = () => {
           >
             Donate Now
           </button>
-          <p>Top Donations</p>
+          <p>Top Donations to this Campaign</p>
           <div className="flex flex-col">
             <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
               <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">

@@ -5,42 +5,26 @@ import Image from 'next/image'
 import React, { useContext } from 'react'
 import { toast } from 'react-toastify'
 
-const ApproveDonationCard = () => {
-  const { unApprovedCampaigns, setUnApprovedCampaigns, setAllCampaigns } =
-    useContext(MyContext)
-  const handleApproval = async (id: string | undefined, data: Campaign) => {
-    try {
-      await editDonation(id, data)
-      setUnApprovedCampaigns(
-        unApprovedCampaigns?.filter((c: any) => c.id !== id)
-      )
-      setAllCampaigns((prev: any) => [...prev, data])
-      toast.success('Campaign Approved successfully', {
-        className: 'toast-success',
-      })
-    } catch (error) {
-      toast.error('Error Approving Campaign', { className: 'toast-error' })
-    }
-  }
+const DeleteDonations = () => {
+  const { allCampaigns, setAllCampaigns } = useContext(MyContext)
+
   const handleDecline = async (id: string) => {
     try {
       await deleteDonation(id)
-      setUnApprovedCampaigns(
-        unApprovedCampaigns?.filter((c: any) => c.id !== id)
-      )
+      setAllCampaigns(allCampaigns?.filter((c: any) => c.id !== id))
       toast.success('Campaign Deleted successfully', {
         className: 'toast-success',
       })
     } catch (error) {
-      toast.error('Error Declining Campaign', { className: 'toast-error' })
+      toast.error('Error Deleting Campaign', { className: 'toast-error' })
     }
   }
   return (
     <section className="text-gray-600 body-font overflow-hidden">
-      <div className="container px-5 py-10 mx-auto">
-        <p className="text-green-600">Approve or decline new campaigns</p>
-        <div className=" divide-y-2 divide-gray-100">
-          {unApprovedCampaigns?.map((campaign: Campaign, index: number) => (
+      <div className="container px-5 py-24 mx-auto">
+        <p className="text-red-600">Manage campaigns</p>
+        <div className="-my-8 divide-y-2 divide-gray-100">
+          {allCampaigns?.map((campaign: Campaign, index: number) => (
             <div
               className="py-8 flex flex-wrap md:flex-nowrap items-center gap-2"
               key={index}
@@ -62,16 +46,10 @@ const ApproveDonationCard = () => {
               </div>
               <div className="flex gap-5 h-16">
                 <button
-                  className="bg-green-700 text-white py-0 px-10 border-1 rounded-2xl"
-                  onClick={() => handleApproval(campaign.id, campaign)}
-                >
-                  Approve
-                </button>
-                <button
                   className="bg-red-700 text-white py-0 px-10 border-1 rounded-2xl"
                   onClick={() => handleDecline(campaign.id)}
                 >
-                  Decline
+                  Delete
                 </button>
               </div>
             </div>
@@ -82,4 +60,4 @@ const ApproveDonationCard = () => {
   )
 }
 
-export default ApproveDonationCard
+export default DeleteDonations

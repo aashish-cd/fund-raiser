@@ -24,6 +24,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
       <main className={`${styles.main}`}>
         <NavBar />
+        <div className="mt-[100px]"></div>
         <Component {...pageProps} />
         <Footer />
         <ToastContainer

@@ -1,14 +1,18 @@
 import { updateOrCreateUser } from '@/firebase/firebase'
 import { User } from '@/types'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 
 const EditProfileModal = ({
   setShowEditModal,
   email,
+  userData,
+  setUserData,
 }: {
   setShowEditModal: any
   email: string
+  userData: any
+  setUserData: any
 }) => {
   const [data, setData] = useState<User>({
     demographics: {
@@ -49,6 +53,7 @@ const EditProfileModal = ({
     e.preventDefault()
     try {
       await updateOrCreateUser(email, data)
+      setUserData(data)
       toast.success('Profile Updated', {
         className: 'toast-success',
       })
@@ -59,6 +64,9 @@ const EditProfileModal = ({
       })
     }
   }
+  useEffect(() => {
+    if (userData) setData(userData)
+  }, [userData])
   return (
     <div className="primary-button ">
       <div
@@ -162,6 +170,34 @@ const EditProfileModal = ({
                   >
                     Interests (write multiple interests separated by comma)
                   </label>
+                  <p className="text-red-300">
+                    Choose Interests from here:{' '}
+                    {[
+                      'disaster',
+                      'personal stories of affected peoples',
+                      'health campaign',
+                      'environment',
+                      'hunger',
+                      'animals',
+                      'refugee campaign',
+                      'homelessness',
+                      'childcare',
+                      'education',
+                    ].map((interest, index) => (
+                      <span
+                        key={index}
+                        className="hover:text-red-800"
+                        onClick={() =>
+                          setData((prev) => ({
+                            ...prev,
+                            interests: [...prev.interests, interest],
+                          }))
+                        }
+                      >
+                        {interest},
+                      </span>
+                    ))}
+                  </p>
                   <textarea
                     id="interests"
                     name="interests"

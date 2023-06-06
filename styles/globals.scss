@@ -20,18 +20,21 @@ $secondary-logo-color: #000b7e;
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  scroll-behavior: smooth;
 }
 
 html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 body {
   color: $primary-text-color;
   background: $primary-background-color;
   font-family: 'Poppins', sans-serif;
+  scroll-behavior: smooth;
 }
 
 @media (prefers-color-scheme: dark) {

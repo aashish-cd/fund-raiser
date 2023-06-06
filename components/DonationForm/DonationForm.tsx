@@ -18,7 +18,7 @@ const DonationForm = ({
 }) => {
   const [data, setData] = useState({
     name: '',
-    amount: 0,
+    amount: null,
   })
 
   const handleValueChange = (e: any) => {
@@ -31,6 +31,16 @@ const DonationForm = ({
   const handlePayment = (e: any) => {
     e.preventDefault()
     console.log({ date: `${new Date().toISOString().slice(0, 10)}` })
+    if (!data.name) {
+      toast.error('Please fill all the fields')
+      return
+    }
+    if (!data.amount || data.amount <= 0 || data.amount > 200) {
+      toast.error(
+        'Amount must be greater than 0 and less than 200 for testing purpose'
+      )
+      return
+    }
     try {
       const khaltiCheckout = KhaltiPay(
         {
@@ -52,6 +62,7 @@ const DonationForm = ({
   }
   return (
     <div
+      className="flex flex-col justify-center items-center"
       style={{
         position: 'absolute',
         top: '50%',
@@ -62,6 +73,7 @@ const DonationForm = ({
         borderRadius: 10,
         zIndex: 111,
         width: '90%',
+        height: '90%',
         // backdropFilter: 'blur(10px)',
         // backfaceVisibility: 'hidden',
       }}
@@ -96,12 +108,15 @@ const DonationForm = ({
               Amount
             </label>
             <input
-              type="text"
+              type="number"
               id="amount"
               name="amount"
               placeholder="Enter donation amount"
               onChange={handleValueChange}
-              value={data.amount}
+              value={data?.amount || ''}
+              step={100}
+              min={1}
+              max={200}
               className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
             />
           </div>
