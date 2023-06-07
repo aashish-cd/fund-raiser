@@ -79,7 +79,8 @@ const modelFilename = path.resolve(__dirname, 'recommendation_model.json')
 try {
   // Attempt to load the trained model
   model = loadModel(modelFilename)
-  console.log('Model loaded successfully!')
+  // console.log('Model loaded successfully!')
+  // console.log(model)
 } catch (error) {
   // If the model doesn't exist, train a new model
   console.log('Model not found. Training a new model...')
@@ -93,6 +94,7 @@ try {
 // Step 6: Generate recommendations using the saved model
 function recommendFundraisers(userId, numRecommendations = 5) {
   const userSimilarities = model[userId] || {}
+  // console.log(userSimilarities)
   const userInterests = userProfiles[userId].interests // fetching through api from database
   // console.log(user1Id)
   const fundraisers = data[0].fundraisers

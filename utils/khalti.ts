@@ -16,8 +16,8 @@ const KhaltiPay = (data: Interaction, campaignData: Campaign) => {
     eventHandler: {
       async onSuccess(payload: any) {
         // hit merchant api for initiating verfication
-        console.log(payload)
-        console.log({ data })
+        // console.log(payload)
+        // console.log({ data })
         await editDonation(data.fundraiserId, {
           ...campaignData,
           currentAmount:

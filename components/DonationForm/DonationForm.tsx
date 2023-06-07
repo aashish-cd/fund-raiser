@@ -30,7 +30,6 @@ const DonationForm = ({
 
   const handlePayment = (e: any) => {
     e.preventDefault()
-    console.log({ date: `${new Date().toISOString().slice(0, 10)}` })
     if (!data.name) {
       toast.error('Please fill all the fields')
       return
