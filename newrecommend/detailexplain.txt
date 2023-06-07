@@ -1,0 +1,42 @@
+
+1. Load the data from an external file (`donor_data.json`) using the `fs` module and parse it as a JSON object. Store the dataset in the `dataset` variable.
+
+2. Define a function called `calculateJaccardSimilarity` or 'calculateCosineSimilarity' that takes two sets as input and calculates the Jaccard similarity coefficient between them. The Jaccard similarity coefficient measures the similarity between two sets as the ratio of the size of their intersection to the size of their union.
+
+3. Define a function called `generateRecommendations` that takes a `userId` and the `data` as input. This function generates fundraiser recommendations for the specified user based on collaborative filtering.
+
+4. Inside the `generateRecommendations` function, find the target user in the dataset by searching for the user with a matching `userId`. If the user is not found, log a message and return an empty array.
+
+5. Extract the target user's interests and interactions from the dataset and store them in `targetInterests` and `targetInteractions` respectively.
+
+6. Create an empty array called `userSimilarities` to store the similarity scores between the target user and other users.
+
+7. Iterate over each item in the dataset. For each item, iterate over the users and calculate the similarity between the target user and the current user. Calculate the similarity as the average of the Jaccard similarity coefficients between their interests and interactions. Add an object containing the `userId` and `similarity` to the `userSimilarities` array.
+
+8. Sort the `userSimilarities` array in descending order based on the `similarity` value.
+
+9. Select the top 20 similar users from the `userSimilarities` array and store them in `topSimilarUser`.
+
+10. Create an empty array called `similarUserFundraisers` to store the fundraisers that the similar users have interacted with.
+
+11. Iterate over each user in `topSimilarUser` and find their interactions in the dataset. Add the `fundraiserId` of each interaction to the `similarUserFundraisers` array.
+
+12. Filter the fundraisers in the dataset based on the following conditions:
+    a. Exclude fundraisers that the target user has already interacted with (`targetInteractions`).
+    b. Include fundraisers that have been interacted with by at least one of the similar users (`similarUserFundraisers`).
+
+13. Combine the filtered fundraisers from the previous step with the fundraisers that match the target user's interests (`targetInterests`) to get the final set of recommendations.
+
+14. Log the number of recommendations and return the recommendations array.
+
+15. Define a function called `getUniqueCategories` that takes the recommendations as input. This function extracts the unique categories of the fundraisers from the recommendations and returns them as an array.
+
+16. Call the `generateRecommendations` function with a `userId` and the `dataset` to generate fundraiser recommendations for a specific user. Store the recommendations in the `recommendations` variable.
+
+17. Log the recommendations for the user with the specified `userId`.
+
+This step is only for checking categories not necessary.... 
+
+18. Call the `getUniqueCategories` function with the recommendations to get the unique categories of the recommended fundraisers. Store the categories in the `uniqueCategories` variable.
+
+19. Log the unique categories.
