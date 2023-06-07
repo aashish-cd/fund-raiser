@@ -11,6 +11,7 @@ import MyContext from '@/context/MyContext'
 const NavBar = () => {
   const { user, handleSignin, isAdmin } = useContext(MyContext)
   const [showSidebar, setShowSidebar] = useState(false)
+  const [active, setActive] = useState(0)
   const reset = () => setShowSidebar(() => false)
   const set = () => setShowSidebar(() => true)
   const router = useRouter()
@@ -45,12 +46,12 @@ const NavBar = () => {
                   key={index}
                   style={{ textDecoration: 'none' }}
                 >
-                  <p className="primary-text">{nav.name}</p>
+                  <p className="primary-text" style={{color: active === index ? 'green' : ''}} onClick={()=>setActive(index)}>{nav.name}</p>
                 </Link>
               ))}
               {isAdmin && (
                 <Link href="/admin" style={{ textDecoration: 'none' }}>
-                  <p className="primary-text">Admin</p>
+                  <p className="primary-text" style={{color: active === 10 ? 'green' : ''}} onClick={()=>setActive(10)}>Admin</p>
                 </Link>
               )}
 
@@ -82,6 +83,7 @@ const NavBar = () => {
             <MobileSlideInBar
               showSidebar={showSidebar}
               setShowSidebar={setShowSidebar}
+              active={active} setActive={setActive}
             />
           }
         </div>

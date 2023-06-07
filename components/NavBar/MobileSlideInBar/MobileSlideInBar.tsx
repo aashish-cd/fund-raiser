@@ -7,10 +7,12 @@ import MyContext from '@/context/MyContext'
 
 const MobileSlideInBar = ({
   showSidebar,
-  setShowSidebar,
+  setShowSidebar,active, setActive
 }: {
   showSidebar: boolean
   setShowSidebar: any
+  active: number
+  setActive: any
 }) => {
   const { user, handleSignin, isAdmin } = useContext(MyContext)
   return (
@@ -25,12 +27,12 @@ const MobileSlideInBar = ({
       >
         {(user ? loginLinks : navLinks).map((nav, index) => (
           <Link href={nav.link} key={index} style={{ textDecoration: 'none' }}>
-            <p className="primary-text">{nav.name}</p>
+            <p className="primary-text" style={{color: active === index ? 'green' : ''}} onClick={()=>setActive(index)}>{nav.name}</p>
           </Link>
         ))}
         {isAdmin && (
           <Link href={'/admin'} style={{ textDecoration: 'none' }}>
-            <p className="primary-text">Admin</p>
+            <p className="primary-text" style={{color: active === 10 ? 'green' : ''}} onClick={()=>setActive(10)}>Admin</p>
           </Link>
         )}
 

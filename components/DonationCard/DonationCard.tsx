@@ -9,6 +9,7 @@ import { Line } from 'rc-progress'
 import KhaltiPay from '../../utils/khalti'
 import DonationForm from '../DonationForm/DonationForm'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 const DonationCard = ({
   data,
@@ -17,6 +18,7 @@ const DonationCard = ({
   data: Campaign[]
   text?: string
 }) => {
+  const router = useRouter()
   return (
     <>
       <h1 className="primary-text text-center text-3xl mb-5">
@@ -68,6 +70,7 @@ const DonationCard = ({
           ))}
         </div>
       </div>
+      <button className='primary-button text-white mt-8 px-10 w-40' onClick={()=>router.push('/campaigns')}>View All</button>
     </>
   )
 }

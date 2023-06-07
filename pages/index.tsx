@@ -6,11 +6,11 @@ import { useRouter } from 'next/router'
 import MyContext from '@/context/MyContext'
 
 export default function Home() {
-  const { allCampaigns } = useContext(MyContext)
+  const { recommendedDonations } = useContext(MyContext)
   return (
     <>
       <Hero />
-      <DonationCard data={allCampaigns} />
+      <DonationCard text='Recommended' data={recommendedDonations} />
     </>
   )
 }

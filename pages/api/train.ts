@@ -1,53 +1,58 @@
-import { getModelFromDb, saveModelToDb } from '@/firebase/firebase'
+import { getDonarData, getModelFromDb, saveModelToDb } from '@/firebase/firebase'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { useContext } from 'react'
 import MyContext from '@/context/MyContext'
 type Data = {}
 
-export default function Handler(
+export default async function Handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  console.log({ req: req.query })
-  const users = []
-  const interactions = []
-  const fundraisers = []
+  // console.log({ req: req.query })
+  // const users = []
+  // const interactions = []
+  // const fundraisers = []
 
-  Object.keys(req.query).forEach((key) => {
-    if (key.startsWith('users')) {
-      const userKey = key.split('[')[1].split(']')[0]
-      const userProperty = key.split('[')[2].split(']')[0]
-      const userValue = req.query[key]
+  // Object.keys(req.query).forEach((key) => {
+  //   if (key.startsWith('users')) {
+  //     const userKey = key.split('[')[1].split(']')[0]
+  //     const userProperty = key.split('[')[2].split(']')[0]
+  //     const userValue = req.query[key]
 
-      if (!users[userKey]) {
-        users[userKey] = { id: userValue }
-      } else {
-        users[userKey][userProperty] = userValue
-      }
-    } else if (key.startsWith('interactions')) {
-      const interactionKey = key.split('[')[1].split(']')[0]
-      const interactionProperty = key.split('[')[2].split(']')[0]
-      const interactionValue = req.query[key]
+  //     if (!users[userKey]) {
+  //       users[userKey] = { id: userValue }
+  //     } else {
+  //       users[userKey][userProperty] = userValue
+  //     }
+  //   } else if (key.startsWith('interactions')) {
+  //     const interactionKey = key.split('[')[1].split(']')[0]
+  //     const interactionProperty = key.split('[')[2].split(']')[0]
+  //     const interactionValue = req.query[key]
 
-      if (!interactions[interactionKey]) {
-        interactions[interactionKey] = { id: interactionValue }
-      } else {
-        interactions[interactionKey][interactionProperty] = interactionValue
-      }
-    } else if (key.startsWith('fundraisers')) {
-      const fundraiserKey = key.split('[')[1].split(']')[0]
-      const fundraiserProperty = key.split('[')[2].split(']')[0]
-      const fundraiserValue = req.query[key]
+  //     if (!interactions[interactionKey]) {
+  //       interactions[interactionKey] = { id: interactionValue }
+  //     } else {
+  //       interactions[interactionKey][interactionProperty] = interactionValue
+  //     }
+  //   } else if (key.startsWith('fundraisers')) {
+  //     const fundraiserKey = key.split('[')[1].split(']')[0]
+  //     const fundraiserProperty = key.split('[')[2].split(']')[0]
+  //     const fundraiserValue = req.query[key]
 
-      if (!fundraisers[fundraiserKey]) {
-        fundraisers[fundraiserKey] = { id: fundraiserValue }
-      } else {
-        fundraisers[fundraiserKey][fundraiserProperty] = fundraiserValue
-      }
-    }
-  })
-  console.log({ users, fundraisers, interactions })
-  const recommendationFunction = (
+  //     if (!fundraisers[fundraiserKey]) {
+  //       fundraisers[fundraiserKey] = { id: fundraiserValue }
+  //     } else {
+  //       fundraisers[fundraiserKey][fundraiserProperty] = fundraiserValue
+  //     }
+  //   }
+  // })
+  // console.log({ users, fundraisers, interactions })
+
+  const {users,fundraisers,interactions} = await getDonarData();
+
+
+
+  const recommendationFunction = async (
     userId: any,
     noOfRecommendations: any,
     users: any,
@@ -61,6 +66,10 @@ export default function Handler(
         interactions,
       },
     ]
+
+
+    // console.log({ users, fundraisers, interactions })
+
 
     //Step 2: User profiling
     const userProfiles = {}
@@ -105,6 +114,8 @@ export default function Handler(
         })
       })
 
+      // console.log(similarities);
+
       return similarities
     }
 
@@ -112,15 +123,27 @@ export default function Handler(
     function saveModel(model) {
       // const serializedModel = JSON.stringify(model)
       // fs.writeFileSync(filename, serializedModel)
+      // console.log("This is model",model)
       saveModelToDb(model)
       // return model
       console.log('saving model')
     }
 
-    function loadModel() {
+  async function loadModel() {
       // const serializedModel = fs.readFileSync(filename, 'utf8')
       // return JSON.parse(serializedModel)
-      return getModelFromDb()
+      // console.log(getModelFromDb())
+      const data = await getModelFromDb();
+      // console.log(data);
+      // console.log("Hello loaddb")
+
+      if (data === null) {
+        throw new Error("Model is null. Please initialize the model before using it.");
+      }
+    
+
+
+      return data;
     }
 
     // Step 5: Train and save the model
@@ -130,11 +153,16 @@ export default function Handler(
 
     try {
       // Attempt to load the trained model
-      model = loadModel()
-
+      
+      model = await loadModel()
+      // console.log(model);
+      if (model === null) {
+        throw new Error("Model is null. Please initialize the model before using it.");
+      }
       console.log('Model loaded successfully!')
     } catch (error) {
       // If the model doesn't exist, train a new model
+      // console.log(error);
       console.log('Model not found. Training a new model...')
       model = trainCollaborativeFiltering()
 
@@ -145,9 +173,11 @@ export default function Handler(
 
     // Step 6: Generate recommendations using the saved model
     function recommendFundraisers(userId, numRecommendations = 5) {
-      const userSimilarities = model[userId] || {}
+      const userSimilarities = model[0][userId] || {}
+      
+      // console.log(userId)
+      // console.log(userSimilarities);
       const userInterests = userProfiles[userId].interests // fetching through api from database
-      // console.log(user1Id)
       const fundraisers = data[0].fundraisers
       // console.log(fundraisers)
       const recommendedFundraisers = []
@@ -175,19 +205,25 @@ export default function Handler(
         numRecommendations
       )
 
+      // console.log(recommendations)
+
       return recommendations
     }
-    return recommendFundraisers(userId, noOfRecommendations)
+    return recommendFundraisers(userId,noOfRecommendations)
   }
   let recommendedData = []
   if ((users, fundraisers, interactions)) {
-    recommendedData = recommendationFunction(
-      'bhattaashish303@gmail.com',
-      10,
+    recommendedData = await recommendationFunction(
+      // 'bhattaashish303@gmail.com',
+      'mkchauhan647@gmail.com',
+      6,
       users,
       fundraisers,
       interactions
     )
   }
+
+  console.log(recommendedData.length);
+
   res.status(200).json({ recommendedData })
 }

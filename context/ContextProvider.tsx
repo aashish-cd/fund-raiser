@@ -32,15 +32,10 @@ const MyProvider = ({ children }: any) => {
   }
   const fetchRecommendedDonations = async () => {
     // next api call to api/train
-    const res = await axios.get('/api/train', {
-      params: {
-        users: allUsers,
-        fundraisers: allCampaigns,
-        interactions: allInteractions,
-      },
-    })
-    setRecommendedDonations(res.data)
-    console.log({ res: res.data })
+    const res = await axios.get('/api/train' )
+        setRecommendedDonations(res.data)
+        setRecommendedDonations(res.data.recommendedData)
+    // console.log({ res: res.data })
     // const res = await recommendFundraisers(user?.email, 5)
     // console.log(res)
     // setAllCampaigns(res.filter((campaign: Campaign) => campaign.isVerified))
@@ -52,12 +47,12 @@ const MyProvider = ({ children }: any) => {
   const fetchUsers = async () => {
     const res = await getAllUsers()
     setAllUsers(res)
-    console.log({ users: res })
+    // console.log({ users: res })
   }
   const fetchAllInteractions = async () => {
     const res = await getAllInteractions()
     setAllInteractions(res)
-    console.log({ interactions: res })
+    // console.log({ interactions: res })
   }
   const fetchUnApprovedDonations = async () => {
     const res = await getAllDonations()
@@ -82,7 +77,7 @@ const MyProvider = ({ children }: any) => {
   }, [])
   useEffect(() => {
     fetchRecommendedDonations()
-  }, [allCampaigns, allInteractions, allUsers])
+  }, [])
 
   const value = {
     data,

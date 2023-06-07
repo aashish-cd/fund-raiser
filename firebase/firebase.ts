@@ -94,18 +94,67 @@ const saveModelToDb = async (data: any) => {
 }
 
 const getModelFromDb = async () => {
-  const docRef = doc(db, 'model', 'model')
-  const docSnap = await getDoc(docRef)
+  // const docRef = doc(db, 'model', 'model')
+  // const docSnap = await getDoc(docRef)
 
-  if (docSnap.exists()) {
-    console.log('Document data:', docSnap.data())
-    return docSnap.data()
-  } else {
-    return null
-  }
+  // if (docSnap.exists()) {
+  //   console.log('Document data:', docSnap.data())
+  //   return docSnap.data()
+  // } else {
+  //   return null
+  // }
+
+  const modelRef = collection(db, 'model')
+const modelRefsnap = await getDocs(modelRef);
+const model = modelRefsnap.docs.map((doc) =>doc.data());
+
+if(model) return model;
+else return null;
+
+
+
 }
 
+
+const getDonarData = async () =>{
+
+  // Get users data
+  
+  const usersRef = collection(db,'users');
+  const usersSnapshot = await getDocs(usersRef)
+  const users = usersSnapshot.docs.map((doc) => doc.data());
+  // console.log(users);
+  
+  // Get fundraisers data
+  const fundraisersRef = collection(db,'campaigns');
+  const fundraisersSnapshot = await getDocs(fundraisersRef)
+  const fundraisers = fundraisersSnapshot.docs.map((doc) => doc.data());
+  
+  // Get interactions data
+  const interactionsRef = collection(db,'interactions');
+  const interactionsSnapshot = await getDocs(interactionsRef)
+  const interactions = interactionsSnapshot.docs.map((doc) => doc.data());
+  
+  // Step 2: Combine the data into a single object (donor_data)
+  
+  const donorData = {
+    users,
+    fundraisers,
+    interactions,
+  };
+  
+  
+  // console.log(donorData);
+  return donorData;
+  
+  }
+
+
+
+
+
 export {
+  getDonarData,
   getAllDonations,
   storeDonation,
   deleteDonation,
