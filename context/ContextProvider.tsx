@@ -30,9 +30,14 @@ const MyProvider = ({ children }: any) => {
       setIsAdmin(false)
     }
   }
-  const fetchRecommendedDonations = async () => {
+  const fetchRecommendedDonations = async (email: string) => {
     // next api call to api/train
-    const res = await axios.get('/api/train' )
+    const res = await axios.get('/api/train', {
+      params: {
+        email: (allUsers?.find(user=> user.email === email)) ? email : 'mkchauhan647@gmail.com'
+
+      }
+    } )
         setRecommendedDonations(res.data)
         setRecommendedDonations(res.data.recommendedData)
     // console.log({ res: res.data })
@@ -68,6 +73,7 @@ const MyProvider = ({ children }: any) => {
       setUser(user)
       whiteListedAdmins.includes(user?.email) && setIsAdmin(true)
     })
+    fetchRecommendedDonations(user?.email)
   }, [auth.currentUser])
   useEffect(() => {
     fetchDonations()
@@ -75,9 +81,9 @@ const MyProvider = ({ children }: any) => {
     fetchAllInteractions()
     fetchUsers()
   }, [])
-  useEffect(() => {
-    fetchRecommendedDonations()
-  }, [])
+  // useEffect(() => {
+  //   fetchRecommendedDonations(null)
+  // }, [])
 
   const value = {
     data,

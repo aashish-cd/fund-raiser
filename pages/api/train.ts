@@ -8,7 +8,8 @@ export default async function Handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  // console.log({ req: req.query })
+  
+  console.log({ req: req.query })
   // const users = []
   // const interactions = []
   // const fundraisers = []
@@ -69,8 +70,8 @@ export default async function Handler(
 
 
     // console.log({ users, fundraisers, interactions })
-
-
+    // if(!users.find(user=> user.id === userId)) userId = 'mkchauhan647@gmail.com';
+    console.log(userId)
     //Step 2: User profiling
     const userProfiles = {}
     data[0].users.forEach((user) => {
@@ -214,8 +215,8 @@ export default async function Handler(
   let recommendedData = []
   if ((users, fundraisers, interactions)) {
     recommendedData = await recommendationFunction(
-      // 'bhattaashish303@gmail.com',
-      'mkchauhan647@gmail.com',
+      req.query.email,
+      // 'mkchauhan64723@gmail.com',
       6,
       users,
       fundraisers,
