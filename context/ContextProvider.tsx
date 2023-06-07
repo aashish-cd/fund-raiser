@@ -4,7 +4,8 @@ import { auth, getAllDonations } from '@/firebase'
 import { useRouter } from 'next/router'
 import { Campaign, Interaction } from '@/types'
 import { whiteListedAdmins } from '@/pages/admin'
-import { getAllInteractions } from '@/firebase/firebase'
+import { getAllInteractions, getAllUsers } from '@/firebase/firebase'
+import axios from 'axios'
 
 const MyProvider = ({ children }: any) => {
   const [data, setData] = useState([])
@@ -18,6 +19,7 @@ const MyProvider = ({ children }: any) => {
   const [showEditModal, setShowEditModal] = useState(false)
   const [allInteractions, setAllInteractions] = useState<Array<Interaction>>()
   const [recommendedDonations, setRecommendedDonations] = useState()
+  const [allUsers, setAllUsers] = useState<any>()
 
   const handleSignin = () => {
     if (user) {
@@ -29,6 +31,16 @@ const MyProvider = ({ children }: any) => {
     }
   }
   const fetchRecommendedDonations = async () => {
+    // next api call to api/train
+    const res = await axios.get('/api/train', {
+      params: {
+        users: allUsers,
+        fundraisers: allCampaigns,
+        interactions: allInteractions,
+      },
+    })
+    setRecommendedDonations(res.data)
+    console.log({ res: res.data })
     // const res = await recommendFundraisers(user?.email, 5)
     // console.log(res)
     // setAllCampaigns(res.filter((campaign: Campaign) => campaign.isVerified))
@@ -36,6 +48,11 @@ const MyProvider = ({ children }: any) => {
   const fetchDonations = async () => {
     const res = await getAllDonations()
     setAllCampaigns(res.filter((campaign: Campaign) => campaign.isVerified))
+  }
+  const fetchUsers = async () => {
+    const res = await getAllUsers()
+    setAllUsers(res)
+    console.log({ users: res })
   }
   const fetchAllInteractions = async () => {
     const res = await getAllInteractions()
@@ -61,7 +78,11 @@ const MyProvider = ({ children }: any) => {
     fetchDonations()
     fetchUnApprovedDonations()
     fetchAllInteractions()
+    fetchUsers()
   }, [])
+  useEffect(() => {
+    fetchRecommendedDonations()
+  }, [allCampaigns, allInteractions, allUsers])
 
   const value = {
     data,
@@ -83,6 +104,8 @@ const MyProvider = ({ children }: any) => {
     setAllInteractions,
     recommendedDonations,
     setRecommendedDonations,
+    allUsers,
+    setAllUsers,
   }
 
   return <MyContext.Provider value={value}>{children}</MyContext.Provider>

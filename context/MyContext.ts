@@ -18,6 +18,8 @@ interface AppContextInterface {
   setAllInteractions: any
   recommendedDonations: any
   setRecommendedDonations: any
+  allUsers: any
+  setAllUsers: any
 }
 const MyContext = createContext<AppContextInterface>({
   data: null,
@@ -37,6 +39,8 @@ const MyContext = createContext<AppContextInterface>({
   setAllInteractions: null,
   recommendedDonations: null,
   setRecommendedDonations: null,
+  allUsers: null,
+  setAllUsers: null,
 })
 
 export default MyContext

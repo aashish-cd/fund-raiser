@@ -24,6 +24,7 @@ import {
 const campaignRef = collection(db, 'campaigns')
 const userRef = collection(db, 'users')
 const interactionRef = collection(db, 'interactions')
+const modelRef = collection(db, 'model')
 
 const getAllDonations = async () => {
   const q = query(campaignRef, orderBy('createdAt', 'desc'))
@@ -52,6 +53,13 @@ const getUser = async (id: string) => {
     return null
   }
 }
+const getAllUsers = async () => {
+  const q = query(userRef)
+  const donationsSnapshot = await getDocs(q)
+  let data: any = []
+  donationsSnapshot.forEach((doc) => data.push({ id: doc.id, ...doc.data() }))
+  return data
+}
 const updateOrCreateUser = async (id: string, data: User) => {
   if (!id) return
   const docRef = doc(db, 'users', id)
@@ -78,6 +86,25 @@ const getAllInteractions = async () => {
   return data
 }
 
+const saveModelToDb = async (data: any) => {
+  await addDoc(modelRef, {
+    ...data,
+    createdAt: serverTimestamp(),
+  })
+}
+
+const getModelFromDb = async () => {
+  const docRef = doc(db, 'model', 'model')
+  const docSnap = await getDoc(docRef)
+
+  if (docSnap.exists()) {
+    console.log('Document data:', docSnap.data())
+    return docSnap.data()
+  } else {
+    return null
+  }
+}
+
 export {
   getAllDonations,
   storeDonation,
@@ -92,4 +119,7 @@ export {
   updateOrCreateUser,
   addInteraction,
   getAllInteractions,
+  saveModelToDb,
+  getAllUsers,
+  getModelFromDb,
 }
