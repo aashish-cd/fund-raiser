@@ -51,7 +51,7 @@ const Footer = () => {
           fontSize: '1.2rem',
         }}
       >
-        {`A Minor Project on 'Fund Raiser Using RNN' `}
+        {`A Minor Project on 'Fund Raiser Using Collaborative Filtering' `}
         <div
           style={{
             marginTop: '1.5rem',
