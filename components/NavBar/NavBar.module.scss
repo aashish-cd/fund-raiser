@@ -40,7 +40,21 @@
         text-align: center;
         vertical-align: middle;
         margin: 0;
+        // /Manoj
+
       }
+      p::after{
+        content:'';
+        background-color: burlywood;
+        display: block;
+        height: 1.5px;
+        width: 0%;
+        transition: 1s;
+      }
+      p:hover::after{
+        width: 100%;
+      }
+
     }
   }
 }
