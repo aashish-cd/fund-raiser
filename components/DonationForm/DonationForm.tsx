@@ -1,6 +1,7 @@
+import MyContext from '@/context/MyContext'
 import { Campaign } from '@/types'
 import KhaltiPay from '@/utils/khalti'
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { toast } from 'react-toastify'
 
 const DonationForm = ({
@@ -20,6 +21,7 @@ const DonationForm = ({
     name: '',
     amount: null,
   })
+  const { user } = useContext(MyContext)
 
   const handleValueChange = (e: any) => {
     setData((prev) => ({
@@ -32,6 +34,10 @@ const DonationForm = ({
     e.preventDefault()
     if (!data.name) {
       toast.error('Please fill all the fields')
+      return
+    }
+    if (!user.email) {
+      toast.error('Please login to donate')
       return
     }
     if (!data.amount || data.amount <= 0 || data.amount > 200) {
@@ -63,7 +69,7 @@ const DonationForm = ({
     <div
       className="flex flex-col justify-center items-center"
       style={{
-        position: 'absolute',
+        position: 'fixed',
         top: '50%',
         left: '50%',
         transform: `translate(-50%, -50%)`,
@@ -122,7 +128,8 @@ const DonationForm = ({
         </div>
         <button
           type="submit"
-          onClick={handlePayment}
+          disabled={!user}
+          onClick={user && handlePayment}
           className="primary-button text-white w-full bg-blue-500 py-2 px-4 rounded "
         >
           Donate Now

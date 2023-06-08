@@ -32,15 +32,14 @@ const MyProvider = ({ children }: any) => {
   }
   const fetchRecommendedDonations = async (email: string) => {
     // next api call to api/train
-    const res = await axios.get('/api/train', {
+    const res = await axios.get('/api/cosine', {
       params: {
-        email: (allUsers?.find(user=> user.email === email)) ? email : 'mkchauhan647@gmail.com'
-
-      }
-    } )
-        setRecommendedDonations(res.data)
-        setRecommendedDonations(res.data.recommendedData)
-    // console.log({ res: res.data })
+        email: email ? email : 'mkchauhan647@gmail.com',
+      },
+    })
+    // setRecommendedDonations(res.data)
+    setRecommendedDonations(res.data.recommendedData)
+    console.log({ res: res.data })
     // const res = await recommendFundraisers(user?.email, 5)
     // console.log(res)
     // setAllCampaigns(res.filter((campaign: Campaign) => campaign.isVerified))
@@ -52,6 +51,7 @@ const MyProvider = ({ children }: any) => {
   const fetchUsers = async () => {
     const res = await getAllUsers()
     setAllUsers(res)
+    fetchRecommendedDonations(user?.email)
     // console.log({ users: res })
   }
   const fetchAllInteractions = async () => {
@@ -73,7 +73,7 @@ const MyProvider = ({ children }: any) => {
       setUser(user)
       whiteListedAdmins.includes(user?.email) && setIsAdmin(true)
     })
-    fetchRecommendedDonations(user?.email)
+    allUsers && fetchRecommendedDonations(user?.email)
   }, [auth.currentUser])
   useEffect(() => {
     fetchDonations()

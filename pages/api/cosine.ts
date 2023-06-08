@@ -12,8 +12,6 @@ export default async function Handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  console.log({ req: req.query })
-
   const { users, fundraisers, interactions } = await getDonarData()
 
   const recommendationFunction = async (
@@ -26,7 +24,7 @@ export default async function Handler(
     const data = [
       {
         users: [
-          users.map((user) => ({
+          ...users.map((user) => ({
             ...user,
             interactions: interactions.filter(
               (interaction: any) => interaction.userId === user.id
@@ -126,7 +124,7 @@ export default async function Handler(
         ...recommendationsByInterests,
       ].slice(0, 10)
 
-      console.log('Number of Recommendations:', recommendations.length)
+      // console.log('Number of Recommendations:', recommendations.length)
 
       return recommendations
     }
@@ -135,7 +133,7 @@ export default async function Handler(
     // const userId = '4a1ad5e1-263d-4e09-93a1-6171f93d185e'
     const recommendations = generateRecommendations()
     console.log('Fundraiser Recommendations for User', userId)
-    console.log({ recommendations })
+    // console.log({ recommendations })
 
     // Function to get unique categories from the recommendations
     function getUniqueCategories(recommendations) {
@@ -153,10 +151,12 @@ export default async function Handler(
     return recommendations
   }
   let recommendedData = []
-  if ((users, fundraisers, interactions)) {
+  if (users && fundraisers && interactions && req.query.email) {
+    console.log({ req: req.query.email })
+
     recommendedData = await recommendationFunction(
       req.query.email,
-      // '076bct092@ioep.edu.np',
+
       6,
       users,
       fundraisers,
